@@ -1,0 +1,1502 @@
+google-workspace
+
+  /**
+   * Clears the authentication credentials, forcing a re-login on the next request.
+   */
+  function auth.clear();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Manually triggers the token refresh process.
+   */
+  function auth.refreshToken();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Creates a new Google Doc. Can be blank or with Markdown content.
+   *
+   * @param title The title for the new Google Doc.
+   * @param folderName? The name of the folder to create the document in.
+   * @param markdown? The Markdown content to create the document from.
+   */
+  function docs.create(title: string, folderName?: string, markdown?: string);
+      {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title for the new Google Doc."
+          },
+          "folderName": {
+            "type": "string",
+            "description": "The name of the folder to create the document in."
+          },
+          "markdown": {
+            "type": "string",
+            "description": "The Markdown content to create the document from."
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Inserts text at the beginning of a Google Doc.
+   *
+   * @param documentId The ID of the document to modify.
+   * @param text The text to insert at the beginning of the document.
+   * @param tabId? The ID of the tab to modify. If not provided, modifies the first tab.
+   */
+  function docs.insertText(documentId: string, text: string, tabId?: string);
+      {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "description": "The ID of the document to modify."
+          },
+          "text": {
+            "type": "string",
+            "description": "The text to insert at the beginning of the document."
+          },
+          "tabId": {
+            "type": "string",
+            "description": "The ID of the tab to modify. If not provided, modifies the first tab."
+          }
+        },
+        "required": [
+          "documentId",
+          "text"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds Google Docs by searching for a query in their title. Supports pagination.
+   *
+   * @param query The text to search for in the document titles.
+   * @param pageToken? The token for the next page of results.
+   * @param pageSize? The maximum number of results to return.
+   */
+  function docs.find(query: string, pageToken?: string, pageSize?: number);
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The text to search for in the document titles."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "The token for the next page of results."
+          },
+          "pageSize": {
+            "type": "number",
+            "description": "The maximum number of results to return."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds a folder by name in Google Drive.
+   *
+   * @param folderName The name of the folder to find.
+   */
+  function drive.findFolder(folderName: string);
+      {
+        "type": "object",
+        "properties": {
+          "folderName": {
+            "type": "string",
+            "description": "The name of the folder to find."
+          }
+        },
+        "required": [
+          "folderName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Moves a document to a specified folder.
+   *
+   * @param documentId The ID of the document to move.
+   * @param folderName The name of the destination folder.
+   */
+  function docs.move(documentId: string, folderName: string);
+      {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "description": "The ID of the document to move."
+          },
+          "folderName": {
+            "type": "string",
+            "description": "The name of the destination folder."
+          }
+        },
+        "required": [
+          "documentId",
+          "folderName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Retrieves the text content of a Google Doc.
+   *
+   * @param documentId The ID of the document to read.
+   * @param tabId? The ID of the tab to read. If not provided, returns all tabs.
+   */
+  function docs.getText(documentId: string, tabId?: string);
+      {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "description": "The ID of the document to read."
+          },
+          "tabId": {
+            "type": "string",
+            "description": "The ID of the tab to read. If not provided, returns all tabs."
+          }
+        },
+        "required": [
+          "documentId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Appends text to the end of a Google Doc.
+   *
+   * @param documentId The ID of the document to modify.
+   * @param text The text to append to the document.
+   * @param tabId? The ID of the tab to modify. If not provided, modifies the first tab.
+   */
+  function docs.appendText(documentId: string, text: string, tabId?: string);
+      {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "description": "The ID of the document to modify."
+          },
+          "text": {
+            "type": "string",
+            "description": "The text to append to the document."
+          },
+          "tabId": {
+            "type": "string",
+            "description": "The ID of the tab to modify. If not provided, modifies the first tab."
+          }
+        },
+        "required": [
+          "documentId",
+          "text"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Replaces all occurrences of a given text with new text in a Google Doc.
+   *
+   * @param documentId The ID of the document to modify.
+   * @param findText The text to find in the document.
+   * @param replaceText The text to replace the found text with.
+   * @param tabId? The ID of the tab to modify. If not provided, replaces in all tabs (legacy behavior).
+   */
+  function docs.replaceText(documentId: string, findText: string, replaceText: string, tabId?: string);
+      {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "description": "The ID of the document to modify."
+          },
+          "findText": {
+            "type": "string",
+            "description": "The text to find in the document."
+          },
+          "replaceText": {
+            "type": "string",
+            "description": "The text to replace the found text with."
+          },
+          "tabId": {
+            "type": "string",
+            "description": "The ID of the tab to modify. If not provided, replaces in all tabs (legacy behavior)."
+          }
+        },
+        "required": [
+          "documentId",
+          "findText",
+          "replaceText"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Extracts the document ID from a Google Workspace URL.
+   *
+   * @param url The URL of the Google Workspace document.
+   */
+  function docs.extractIdFromUrl(url: string);
+      {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL of the Google Workspace document."
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Retrieves the text content of a Google Slides presentation.
+   *
+   * @param presentationId The ID or URL of the presentation to read.
+   */
+  function slides.getText(presentationId: string);
+      {
+        "type": "object",
+        "properties": {
+          "presentationId": {
+            "type": "string",
+            "description": "The ID or URL of the presentation to read."
+          }
+        },
+        "required": [
+          "presentationId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds Google Slides presentations by searching for a query. Supports pagination.
+   *
+   * @param query The text to search for in presentations.
+   * @param pageToken? The token for the next page of results.
+   * @param pageSize? The maximum number of results to return.
+   */
+  function slides.find(query: string, pageToken?: string, pageSize?: number);
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The text to search for in presentations."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "The token for the next page of results."
+          },
+          "pageSize": {
+            "type": "number",
+            "description": "The maximum number of results to return."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets metadata about a Google Slides presentation.
+   *
+   * @param presentationId The ID or URL of the presentation.
+   */
+  function slides.getMetadata(presentationId: string);
+      {
+        "type": "object",
+        "properties": {
+          "presentationId": {
+            "type": "string",
+            "description": "The ID or URL of the presentation."
+          }
+        },
+        "required": [
+          "presentationId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Retrieves the content of a Google Sheets spreadsheet.
+   *
+   * @param spreadsheetId The ID or URL of the spreadsheet to read.
+   * @param format? Output format (default: text).
+   */
+  function sheets.getText(spreadsheetId: string, format?: "text" | "csv" | "json");
+      {
+        "type": "object",
+        "properties": {
+          "spreadsheetId": {
+            "type": "string",
+            "description": "The ID or URL of the spreadsheet to read."
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "text",
+              "csv",
+              "json"
+            ],
+            "description": "Output format (default: text)."
+          }
+        },
+        "required": [
+          "spreadsheetId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets values from a specific range in a Google Sheets spreadsheet.
+   *
+   * @param spreadsheetId The ID or URL of the spreadsheet.
+   * @param range The A1 notation range to get (e.g., "Sheet1!A1:B10").
+   */
+  function sheets.getRange(spreadsheetId: string, range: string);
+      {
+        "type": "object",
+        "properties": {
+          "spreadsheetId": {
+            "type": "string",
+            "description": "The ID or URL of the spreadsheet."
+          },
+          "range": {
+            "type": "string",
+            "description": "The A1 notation range to get (e.g., \"Sheet1!A1:B10\")."
+          }
+        },
+        "required": [
+          "spreadsheetId",
+          "range"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds Google Sheets spreadsheets by searching for a query. Supports pagination.
+   *
+   * @param query The text to search for in spreadsheets.
+   * @param pageToken? The token for the next page of results.
+   * @param pageSize? The maximum number of results to return.
+   */
+  function sheets.find(query: string, pageToken?: string, pageSize?: number);
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The text to search for in spreadsheets."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "The token for the next page of results."
+          },
+          "pageSize": {
+            "type": "number",
+            "description": "The maximum number of results to return."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets metadata about a Google Sheets spreadsheet.
+   *
+   * @param spreadsheetId The ID or URL of the spreadsheet.
+   */
+  function sheets.getMetadata(spreadsheetId: string);
+      {
+        "type": "object",
+        "properties": {
+          "spreadsheetId": {
+            "type": "string",
+            "description": "The ID or URL of the spreadsheet."
+          }
+        },
+        "required": [
+          "spreadsheetId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Searches for files and folders in Google Drive. The query can be a simple search term, a Google
+   * Drive URL, or a full query string. For more information on query strings see:
+   * https://developers.google.com/drive/api/guides/search-files
+   *
+   * @param query? A simple search term (e.g., "Budget Q3"), a Google Drive URL, or a full query string
+   *               (e.g., "name contains 'Budget' and owners in 'user@example.com'").
+   * @param pageSize? The maximum number of results to return.
+   * @param pageToken? The token for the next page of results.
+   * @param corpus? The corpus of files to search (e.g., "user", "domain").
+   * @param unreadOnly? Whether to filter for unread files only.
+   * @param sharedWithMe? Whether to search for files shared with the user.
+   */
+  function drive.search(query?: string, pageSize?: number, pageToken?: string, corpus?: string, unreadOnly?: boolean);
+  // optional (1): sharedWithMe
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "A simple search term (e.g., \"Budget Q3\"), a Google Drive URL, or a full query string (e.g., \"name contains 'Budget' and owners in 'user@example.com'\")."
+          },
+          "pageSize": {
+            "type": "number",
+            "description": "The maximum number of results to return."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "The token for the next page of results."
+          },
+          "corpus": {
+            "type": "string",
+            "description": "The corpus of files to search (e.g., \"user\", \"domain\")."
+          },
+          "unreadOnly": {
+            "type": "boolean",
+            "description": "Whether to filter for unread files only."
+          },
+          "sharedWithMe": {
+            "type": "boolean",
+            "description": "Whether to search for files shared with the user."
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Downloads the content of a file from Google Drive to a local path. Note: Google Docs, Sheets, and
+   * Slides require specialized handling.
+   *
+   * @param fileId The ID of the file to download.
+   * @param localPath The local file path where the content should be saved (e.g.,
+   *                  "downloads/report.pdf").
+   */
+  function drive.downloadFile(fileId: string, localPath: string);
+      {
+        "type": "object",
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "description": "The ID of the file to download."
+          },
+          "localPath": {
+            "type": "string",
+            "description": "The local file path where the content should be saved (e.g., \"downloads/report.pdf\")."
+          }
+        },
+        "required": [
+          "fileId",
+          "localPath"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Lists all of the user's calendars.
+   */
+  function calendar.list();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Creates a new event in a calendar.
+   *
+   * @param calendarId The ID of the calendar to create the event in.
+   * @param summary The summary or title of the event.
+   * @param attendees? The email addresses of the attendees.
+   */
+  function calendar.createEvent(calendarId: string, summary: string, start: unknown, end: unknown, attendees?: string[]);
+      {
+        "type": "object",
+        "properties": {
+          "calendarId": {
+            "type": "string",
+            "description": "The ID of the calendar to create the event in."
+          },
+          "summary": {
+            "type": "string",
+            "description": "The summary or title of the event."
+          },
+          "start": {
+            "type": "object",
+            "properties": {
+              "dateTime": {
+                "type": "string",
+                "description": "The start time in strict ISO 8601 format with seconds and timezone (e.g., 2024-01-15T10:30:00Z or 2024-01-15T10:30:00-05:00)."
+              }
+            },
+            "required": [
+              "dateTime"
+            ],
+            "additionalProperties": false
+          },
+          "end": {
+            "type": "object",
+            "properties": {
+              "dateTime": {
+                "type": "string",
+                "description": "The end time in strict ISO 8601 format with seconds and timezone (e.g., 2024-01-15T11:30:00Z or 2024-01-15T11:30:00-05:00)."
+              }
+            },
+            "required": [
+              "dateTime"
+            ],
+            "additionalProperties": false
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The email addresses of the attendees."
+          }
+        },
+        "required": [
+          "calendarId",
+          "summary",
+          "start",
+          "end"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Lists events from a calendar. Defaults to upcoming events.
+   *
+   * @param calendarId The ID of the calendar to list events from.
+   * @param timeMin? The start time for the event search. Defaults to the current time.
+   * @param timeMax? The end time for the event search.
+   * @param attendeeResponseStatus? The response status of the attendee.
+   */
+  function calendar.listEvents(calendarId: string, timeMin?: string, timeMax?: string, attendeeResponseStatus?: string[]);
+      {
+        "type": "object",
+        "properties": {
+          "calendarId": {
+            "type": "string",
+            "description": "The ID of the calendar to list events from."
+          },
+          "timeMin": {
+            "type": "string",
+            "description": "The start time for the event search. Defaults to the current time."
+          },
+          "timeMax": {
+            "type": "string",
+            "description": "The end time for the event search."
+          },
+          "attendeeResponseStatus": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The response status of the attendee."
+          }
+        },
+        "required": [
+          "calendarId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets the details of a specific calendar event.
+   *
+   * @param eventId The ID of the event to retrieve.
+   * @param calendarId? The ID of the calendar the event belongs to. Defaults to the primary calendar.
+   */
+  function calendar.getEvent(eventId: string, calendarId?: string);
+      {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "description": "The ID of the event to retrieve."
+          },
+          "calendarId": {
+            "type": "string",
+            "description": "The ID of the calendar the event belongs to. Defaults to the primary calendar."
+          }
+        },
+        "required": [
+          "eventId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds a free time slot for multiple people to meet.
+   *
+   * @param attendees The email addresses of the attendees.
+   * @param timeMin The start time for the search in strict ISO 8601 format with seconds and timezone
+   *                (e.g., 2024-01-15T09:00:00Z or 2024-01-15T09:00:00-05:00).
+   * @param timeMax The end time for the search in strict ISO 8601 format with seconds and timezone
+   *                (e.g., 2024-01-15T18:00:00Z or 2024-01-15T18:00:00-05:00).
+   * @param duration The duration of the meeting in minutes.
+   */
+  function calendar.findFreeTime(attendees: string[], timeMin: string, timeMax: string, duration: number);
+      {
+        "type": "object",
+        "properties": {
+          "attendees": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The email addresses of the attendees."
+          },
+          "timeMin": {
+            "type": "string",
+            "description": "The start time for the search in strict ISO 8601 format with seconds and timezone (e.g., 2024-01-15T09:00:00Z or 2024-01-15T09:00:00-05:00)."
+          },
+          "timeMax": {
+            "type": "string",
+            "description": "The end time for the search in strict ISO 8601 format with seconds and timezone (e.g., 2024-01-15T18:00:00Z or 2024-01-15T18:00:00-05:00)."
+          },
+          "duration": {
+            "type": "number",
+            "description": "The duration of the meeting in minutes."
+          }
+        },
+        "required": [
+          "attendees",
+          "timeMin",
+          "timeMax",
+          "duration"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Updates an existing event in a calendar.
+   *
+   * @param eventId The ID of the event to update.
+   * @param calendarId? The ID of the calendar to update the event in.
+   * @param summary? The new summary or title of the event.
+   * @param attendees? The new list of attendees for the event.
+   */
+  function calendar.updateEvent(eventId: string, calendarId?: string, summary?: string, start?: unknown, end?: unknown);
+  // optional (1): attendees
+      {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "description": "The ID of the event to update."
+          },
+          "calendarId": {
+            "type": "string",
+            "description": "The ID of the calendar to update the event in."
+          },
+          "summary": {
+            "type": "string",
+            "description": "The new summary or title of the event."
+          },
+          "start": {
+            "type": "object",
+            "properties": {
+              "dateTime": {
+                "type": "string",
+                "description": "The new start time in strict ISO 8601 format with seconds and timezone (e.g., 2024-01-15T10:30:00Z or 2024-01-15T10:30:00-05:00)."
+              }
+            },
+            "required": [
+              "dateTime"
+            ],
+            "additionalProperties": false
+          },
+          "end": {
+            "type": "object",
+            "properties": {
+              "dateTime": {
+                "type": "string",
+                "description": "The new end time in strict ISO 8601 format with seconds and timezone (e.g., 2024-01-15T11:30:00Z or 2024-01-15T11:30:00-05:00)."
+              }
+            },
+            "required": [
+              "dateTime"
+            ],
+            "additionalProperties": false
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The new list of attendees for the event."
+          }
+        },
+        "required": [
+          "eventId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Responds to a meeting invitation (accept, decline, or tentative).
+   *
+   * @param eventId The ID of the event to respond to.
+   * @param calendarId? The ID of the calendar containing the event.
+   * @param responseStatus Your response to the invitation.
+   * @param sendNotification? Whether to send a notification to the organizer (default: true).
+   * @param responseMessage? Optional message to include with your response.
+   */
+  function calendar.respondToEvent(eventId: string, calendarId?: string, responseStatus: "accepted" | "declined" | "tentative", sendNotification?: boolean, responseMessage?: string);
+      {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "description": "The ID of the event to respond to."
+          },
+          "calendarId": {
+            "type": "string",
+            "description": "The ID of the calendar containing the event."
+          },
+          "responseStatus": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "declined",
+              "tentative"
+            ],
+            "description": "Your response to the invitation."
+          },
+          "sendNotification": {
+            "type": "boolean",
+            "description": "Whether to send a notification to the organizer (default: true)."
+          },
+          "responseMessage": {
+            "type": "string",
+            "description": "Optional message to include with your response."
+          }
+        },
+        "required": [
+          "eventId",
+          "responseStatus"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Deletes an event from a calendar.
+   *
+   * @param eventId The ID of the event to delete.
+   * @param calendarId? The ID of the calendar to delete the event from. Defaults to the primary
+   *                    calendar.
+   */
+  function calendar.deleteEvent(eventId: string, calendarId?: string);
+      {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "description": "The ID of the event to delete."
+          },
+          "calendarId": {
+            "type": "string",
+            "description": "The ID of the calendar to delete the event from. Defaults to the primary calendar."
+          }
+        },
+        "required": [
+          "eventId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Lists the spaces the user is a member of.
+   */
+  function chat.listSpaces();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds a Google Chat space by its display name.
+   *
+   * @param displayName The display name of the space to find.
+   */
+  function chat.findSpaceByName(displayName: string);
+      {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "description": "The display name of the space to find."
+          }
+        },
+        "required": [
+          "displayName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Sends a message to a Google Chat space.
+   *
+   * @param spaceName The name of the space to send the message to (e.g., spaces/AAAAN2J52O8).
+   * @param message The message to send.
+   */
+  function chat.sendMessage(spaceName: string, message: string);
+      {
+        "type": "object",
+        "properties": {
+          "spaceName": {
+            "type": "string",
+            "description": "The name of the space to send the message to (e.g., spaces/AAAAN2J52O8)."
+          },
+          "message": {
+            "type": "string",
+            "description": "The message to send."
+          }
+        },
+        "required": [
+          "spaceName",
+          "message"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets messages from a Google Chat space.
+   *
+   * @param spaceName The name of the space to get messages from (e.g., spaces/AAAAN2J52O8).
+   * @param threadName? The resource name of the thread to filter messages by. Example:
+   *                    "spaces/AAAAVJcnwPE/threads/IAf4cnLqYfg"
+   * @param unreadOnly? Whether to return only unread messages.
+   * @param pageSize? The maximum number of messages to return.
+   * @param pageToken? The token for the next page of results.
+   * @param orderBy? The order to list messages in (e.g., "createTime desc").
+   */
+  function chat.getMessages(spaceName: string, threadName?: string, unreadOnly?: boolean, pageSize?: number, pageToken?: string);
+  // optional (1): orderBy
+      {
+        "type": "object",
+        "properties": {
+          "spaceName": {
+            "type": "string",
+            "description": "The name of the space to get messages from (e.g., spaces/AAAAN2J52O8)."
+          },
+          "threadName": {
+            "type": "string",
+            "description": "The resource name of the thread to filter messages by. Example: \"spaces/AAAAVJcnwPE/threads/IAf4cnLqYfg\""
+          },
+          "unreadOnly": {
+            "type": "boolean",
+            "description": "Whether to return only unread messages."
+          },
+          "pageSize": {
+            "type": "number",
+            "description": "The maximum number of messages to return."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "The token for the next page of results."
+          },
+          "orderBy": {
+            "type": "string",
+            "description": "The order to list messages in (e.g., \"createTime desc\")."
+          }
+        },
+        "required": [
+          "spaceName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Sends a direct message to a user.
+   *
+   * @param email The email address of the user to send the message to.
+   * @param message The message to send.
+   */
+  function chat.sendDm(email: string, message: string);
+      {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of the user to send the message to."
+          },
+          "message": {
+            "type": "string",
+            "description": "The message to send."
+          }
+        },
+        "required": [
+          "email",
+          "message"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Finds a Google Chat DM space by a user's email address.
+   *
+   * @param email The email address of the user to find the DM space with.
+   */
+  function chat.findDmByEmail(email: string);
+      {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of the user to find the DM space with."
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Lists threads from a Google Chat space in reverse chronological order.
+   *
+   * @param spaceName The name of the space to get threads from (e.g., spaces/AAAAN2J52O8).
+   * @param pageSize? The maximum number of threads to return.
+   * @param pageToken? The token for the next page of results.
+   */
+  function chat.listThreads(spaceName: string, pageSize?: number, pageToken?: string);
+      {
+        "type": "object",
+        "properties": {
+          "spaceName": {
+            "type": "string",
+            "description": "The name of the space to get threads from (e.g., spaces/AAAAN2J52O8)."
+          },
+          "pageSize": {
+            "type": "number",
+            "description": "The maximum number of threads to return."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "The token for the next page of results."
+          }
+        },
+        "required": [
+          "spaceName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Sets up a new Google Chat space with a display name and a list of members.
+   *
+   * @param displayName The display name of the space.
+   * @param userNames The user names of the members to add to the space (e.g. users/12345678)
+   */
+  function chat.setUpSpace(displayName: string, userNames: string[]);
+      {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "description": "The display name of the space."
+          },
+          "userNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The user names of the members to add to the space (e.g. users/12345678)"
+          }
+        },
+        "required": [
+          "displayName",
+          "userNames"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Search for emails in Gmail using query parameters.
+   *
+   * @param query? Search query (same syntax as Gmail search box, e.g., "from:someone@example.com
+   *               is:unread").
+   * @param maxResults? Maximum number of results to return (default: 100).
+   * @param pageToken? Token for the next page of results.
+   * @param labelIds? Filter by label IDs (e.g., ["INBOX", "UNREAD"]).
+   * @param includeSpamTrash? Include messages from SPAM and TRASH (default: false).
+   */
+  function gmail.search(query?: string, maxResults?: number, pageToken?: string, labelIds?: string[], includeSpamTrash?: boolean);
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query (same syntax as Gmail search box, e.g., \"from:someone@example.com is:unread\")."
+          },
+          "maxResults": {
+            "type": "number",
+            "description": "Maximum number of results to return (default: 100)."
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "Token for the next page of results."
+          },
+          "labelIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by label IDs (e.g., [\"INBOX\", \"UNREAD\"])."
+          },
+          "includeSpamTrash": {
+            "type": "boolean",
+            "description": "Include messages from SPAM and TRASH (default: false)."
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Get the full content of a specific email message.
+   *
+   * @param messageId The ID of the message to retrieve.
+   * @param format? Format of the message (default: full).
+   */
+  function gmail.get(messageId: string, format?: "minimal" | "full" | "raw" | "metadata");
+      {
+        "type": "object",
+        "properties": {
+          "messageId": {
+            "type": "string",
+            "description": "The ID of the message to retrieve."
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "minimal",
+              "full",
+              "raw",
+              "metadata"
+            ],
+            "description": "Format of the message (default: full)."
+          }
+        },
+        "required": [
+          "messageId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Downloads an attachment from a Gmail message to a local file.
+   *
+   * @param messageId The ID of the message containing the attachment.
+   * @param attachmentId The ID of the attachment to download.
+   * @param localPath The absolute local path where the attachment should be saved (e.g.,
+   *                  "/Users/name/downloads/report.pdf").
+   */
+  function gmail.downloadAttachment(messageId: string, attachmentId: string, localPath: string);
+      {
+        "type": "object",
+        "properties": {
+          "messageId": {
+            "type": "string",
+            "description": "The ID of the message containing the attachment."
+          },
+          "attachmentId": {
+            "type": "string",
+            "description": "The ID of the attachment to download."
+          },
+          "localPath": {
+            "type": "string",
+            "description": "The absolute local path where the attachment should be saved (e.g., \"/Users/name/downloads/report.pdf\")."
+          }
+        },
+        "required": [
+          "messageId",
+          "attachmentId",
+          "localPath"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Modify a Gmail message. Supported modifications include:
+   * - Add labels to a message.
+   * - Remove labels from a message.
+   * There are a list of system labels that can be modified on a message:
+   * - INBOX: removing INBOX label removes the message from inbox and archives the message.
+   * - SPAM: adding SPAM label marks a message as spam.
+   * - TRASH: adding TRASH label moves a message to trash.
+   * - UNREAD: removing UNREAD label marks a message as read.
+   * - STARRED: adding STARRED label marks a message as starred.
+   * - IMPORTANT: adding IMPORTANT label marks a message as important.
+   *
+   * @param messageId The ID of the message to add labels to and/or remove labels from.
+   * @param addLabelIds? A list of label IDs to add to the message. Limit to 100 labels.
+   * @param removeLabelIds? A list of label IDs to remove from the message. Limit to 100 labels.
+   */
+  function gmail.modify(messageId: string, addLabelIds?: string[], removeLabelIds?: string[]);
+      {
+        "type": "object",
+        "properties": {
+          "messageId": {
+            "type": "string",
+            "description": "The ID of the message to add labels to and/or remove labels from."
+          },
+          "addLabelIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 100,
+            "description": "A list of label IDs to add to the message. Limit to 100 labels."
+          },
+          "removeLabelIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 100,
+            "description": "A list of label IDs to remove from the message. Limit to 100 labels."
+          }
+        },
+        "required": [
+          "messageId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Send an email message.
+   *
+   * @param to Recipient email address(es).
+   * @param subject Email subject.
+   * @param body Email body content.
+   * @param cc? CC recipient email address(es).
+   * @param bcc? BCC recipient email address(es).
+   * @param isHtml? Whether the body is HTML (default: false).
+   */
+  function gmail.send(to: unknown, subject: string, body: string, cc?: unknown, bcc?: unknown);
+  // optional (1): isHtml
+      {
+        "type": "object",
+        "properties": {
+          "to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "Recipient email address(es)."
+          },
+          "subject": {
+            "type": "string",
+            "description": "Email subject."
+          },
+          "body": {
+            "type": "string",
+            "description": "Email body content."
+          },
+          "cc": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "CC recipient email address(es)."
+          },
+          "bcc": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "BCC recipient email address(es)."
+          },
+          "isHtml": {
+            "type": "boolean",
+            "description": "Whether the body is HTML (default: false)."
+          }
+        },
+        "required": [
+          "to",
+          "subject",
+          "body"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Create a draft email message.
+   *
+   * @param to Recipient email address(es).
+   * @param subject Email subject.
+   * @param body Email body content.
+   * @param cc? CC recipient email address(es).
+   * @param bcc? BCC recipient email address(es).
+   * @param isHtml? Whether the body is HTML (default: false).
+   */
+  function gmail.createDraft(to: unknown, subject: string, body: string, cc?: unknown, bcc?: unknown);
+  // optional (1): isHtml
+      {
+        "type": "object",
+        "properties": {
+          "to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "Recipient email address(es)."
+          },
+          "subject": {
+            "type": "string",
+            "description": "Email subject."
+          },
+          "body": {
+            "type": "string",
+            "description": "Email body content."
+          },
+          "cc": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "CC recipient email address(es)."
+          },
+          "bcc": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "BCC recipient email address(es)."
+          },
+          "isHtml": {
+            "type": "boolean",
+            "description": "Whether the body is HTML (default: false)."
+          }
+        },
+        "required": [
+          "to",
+          "subject",
+          "body"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Send a previously created draft email.
+   *
+   * @param draftId The ID of the draft to send.
+   */
+  function gmail.sendDraft(draftId: string);
+      {
+        "type": "object",
+        "properties": {
+          "draftId": {
+            "type": "string",
+            "description": "The ID of the draft to send."
+          }
+        },
+        "required": [
+          "draftId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * List all Gmail labels in the user's mailbox.
+   */
+  function gmail.listLabels();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets the current date. Returns both UTC (for calendar/API use) and local time (for display to the
+   * user), along with the timezone.
+   */
+  function time.getCurrentDate();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets the current time. Returns both UTC (for calendar/API use) and local time (for display to the
+   * user), along with the timezone.
+   */
+  function time.getCurrentTime();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets the local timezone. Note: timezone is also included in getCurrentDate and getCurrentTime
+   * responses.
+   */
+  function time.getTimeZone();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets a user's profile information.
+   *
+   * @param userId? The ID of the user to get profile information for.
+   * @param email? The email address of the user to get profile information for.
+   * @param name? The name of the user to get profile information for.
+   */
+  function people.getUserProfile(userId?: string, email?: string, name?: string);
+      {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The ID of the user to get profile information for."
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user to get profile information for."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the user to get profile information for."
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  /**
+   * Gets the profile information of the authenticated user.
+   */
+  function people.getMe();
+      {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+
+  Examples:
+    mcporter call google-workspace.auth.clear()
+
+  Optional parameters hidden; run with --all-parameters to view all fields.
+
+  49 tools · 448ms · STDIO node /opt/homebrew/lib/node_modules/@presto-ai/google-workspace-mcp/dist/index.js
+

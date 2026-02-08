@@ -1,0 +1,428 @@
+{
+  "mode": "list",
+  "counts": {
+    "ok": 2,
+    "auth": 0,
+    "offline": 0,
+    "http": 0,
+    "error": 0
+  },
+  "servers": [
+    {
+      "name": "google-workspace",
+      "status": "ok",
+      "durationMs": 474,
+      "transport": "STDIO node /opt/homebrew/lib/node_modules/@presto-ai/google-workspace-mcp/dist/index.js",
+      "source": {
+        "kind": "local",
+        "path": "/Users/daneel/.mcporter/mcporter.json"
+      },
+      "tools": [
+        {
+          "name": "auth.clear",
+          "description": "Clears the authentication credentials, forcing a re-login on the next request."
+        },
+        {
+          "name": "auth.refreshToken",
+          "description": "Manually triggers the token refresh process."
+        },
+        {
+          "name": "docs.create",
+          "description": "Creates a new Google Doc. Can be blank or with Markdown content."
+        },
+        {
+          "name": "docs.insertText",
+          "description": "Inserts text at the beginning of a Google Doc."
+        },
+        {
+          "name": "docs.find",
+          "description": "Finds Google Docs by searching for a query in their title. Supports pagination."
+        },
+        {
+          "name": "drive.findFolder",
+          "description": "Finds a folder by name in Google Drive."
+        },
+        {
+          "name": "docs.move",
+          "description": "Moves a document to a specified folder."
+        },
+        {
+          "name": "docs.getText",
+          "description": "Retrieves the text content of a Google Doc."
+        },
+        {
+          "name": "docs.appendText",
+          "description": "Appends text to the end of a Google Doc."
+        },
+        {
+          "name": "docs.replaceText",
+          "description": "Replaces all occurrences of a given text with new text in a Google Doc."
+        },
+        {
+          "name": "docs.extractIdFromUrl",
+          "description": "Extracts the document ID from a Google Workspace URL."
+        },
+        {
+          "name": "slides.getText",
+          "description": "Retrieves the text content of a Google Slides presentation."
+        },
+        {
+          "name": "slides.find",
+          "description": "Finds Google Slides presentations by searching for a query. Supports pagination."
+        },
+        {
+          "name": "slides.getMetadata",
+          "description": "Gets metadata about a Google Slides presentation."
+        },
+        {
+          "name": "sheets.getText",
+          "description": "Retrieves the content of a Google Sheets spreadsheet."
+        },
+        {
+          "name": "sheets.getRange",
+          "description": "Gets values from a specific range in a Google Sheets spreadsheet."
+        },
+        {
+          "name": "sheets.find",
+          "description": "Finds Google Sheets spreadsheets by searching for a query. Supports pagination."
+        },
+        {
+          "name": "sheets.getMetadata",
+          "description": "Gets metadata about a Google Sheets spreadsheet."
+        },
+        {
+          "name": "drive.search",
+          "description": "Searches for files and folders in Google Drive. The query can be a simple search term, a Google Drive URL, or a full query string. For more information on query strings see: https://developers.google.com/drive/api/guides/search-files"
+        },
+        {
+          "name": "drive.downloadFile",
+          "description": "Downloads the content of a file from Google Drive to a local path. Note: Google Docs, Sheets, and Slides require specialized handling."
+        },
+        {
+          "name": "calendar.list",
+          "description": "Lists all of the user's calendars."
+        },
+        {
+          "name": "calendar.createEvent",
+          "description": "Creates a new event in a calendar."
+        },
+        {
+          "name": "calendar.listEvents",
+          "description": "Lists events from a calendar. Defaults to upcoming events."
+        },
+        {
+          "name": "calendar.getEvent",
+          "description": "Gets the details of a specific calendar event."
+        },
+        {
+          "name": "calendar.findFreeTime",
+          "description": "Finds a free time slot for multiple people to meet."
+        },
+        {
+          "name": "calendar.updateEvent",
+          "description": "Updates an existing event in a calendar."
+        },
+        {
+          "name": "calendar.respondToEvent",
+          "description": "Responds to a meeting invitation (accept, decline, or tentative)."
+        },
+        {
+          "name": "calendar.deleteEvent",
+          "description": "Deletes an event from a calendar."
+        },
+        {
+          "name": "chat.listSpaces",
+          "description": "Lists the spaces the user is a member of."
+        },
+        {
+          "name": "chat.findSpaceByName",
+          "description": "Finds a Google Chat space by its display name."
+        },
+        {
+          "name": "chat.sendMessage",
+          "description": "Sends a message to a Google Chat space."
+        },
+        {
+          "name": "chat.getMessages",
+          "description": "Gets messages from a Google Chat space."
+        },
+        {
+          "name": "chat.sendDm",
+          "description": "Sends a direct message to a user."
+        },
+        {
+          "name": "chat.findDmByEmail",
+          "description": "Finds a Google Chat DM space by a user's email address."
+        },
+        {
+          "name": "chat.listThreads",
+          "description": "Lists threads from a Google Chat space in reverse chronological order."
+        },
+        {
+          "name": "chat.setUpSpace",
+          "description": "Sets up a new Google Chat space with a display name and a list of members."
+        },
+        {
+          "name": "gmail.search",
+          "description": "Search for emails in Gmail using query parameters."
+        },
+        {
+          "name": "gmail.get",
+          "description": "Get the full content of a specific email message."
+        },
+        {
+          "name": "gmail.downloadAttachment",
+          "description": "Downloads an attachment from a Gmail message to a local file."
+        },
+        {
+          "name": "gmail.modify",
+          "description": "Modify a Gmail message. Supported modifications include:\n    - Add labels to a message.\n    - Remove labels from a message.\nThere are a list of system labels that can be modified on a message:\n    - INBOX: removing INBOX label removes the message from inbox and archives the message.\n    - SPAM: adding SPAM label marks a message as spam.\n    - TRASH: adding TRASH label moves a message to trash.\n    - UNREAD: removing UNREAD label marks a message as read.\n    - STARRED: adding STARRED label marks a message as starred.\n    - IMPORTANT: adding IMPORTANT label marks a message as important."
+        },
+        {
+          "name": "gmail.send",
+          "description": "Send an email message."
+        },
+        {
+          "name": "gmail.createDraft",
+          "description": "Create a draft email message."
+        },
+        {
+          "name": "gmail.sendDraft",
+          "description": "Send a previously created draft email."
+        },
+        {
+          "name": "gmail.listLabels",
+          "description": "List all Gmail labels in the user's mailbox."
+        },
+        {
+          "name": "time.getCurrentDate",
+          "description": "Gets the current date. Returns both UTC (for calendar/API use) and local time (for display to the user), along with the timezone."
+        },
+        {
+          "name": "time.getCurrentTime",
+          "description": "Gets the current time. Returns both UTC (for calendar/API use) and local time (for display to the user), along with the timezone."
+        },
+        {
+          "name": "time.getTimeZone",
+          "description": "Gets the local timezone. Note: timezone is also included in getCurrentDate and getCurrentTime responses."
+        },
+        {
+          "name": "people.getUserProfile",
+          "description": "Gets a user's profile information."
+        },
+        {
+          "name": "people.getMe",
+          "description": "Gets the profile information of the authenticated user."
+        }
+      ]
+    },
+    {
+      "name": "google-workspace-blaze",
+      "status": "ok",
+      "durationMs": 471,
+      "transport": "STDIO node /opt/homebrew/lib/node_modules/@presto-ai/google-workspace-mcp/dist/index.js",
+      "source": {
+        "kind": "local",
+        "path": "/Users/daneel/.mcporter/mcporter.json"
+      },
+      "tools": [
+        {
+          "name": "auth.clear",
+          "description": "Clears the authentication credentials, forcing a re-login on the next request."
+        },
+        {
+          "name": "auth.refreshToken",
+          "description": "Manually triggers the token refresh process."
+        },
+        {
+          "name": "docs.create",
+          "description": "Creates a new Google Doc. Can be blank or with Markdown content."
+        },
+        {
+          "name": "docs.insertText",
+          "description": "Inserts text at the beginning of a Google Doc."
+        },
+        {
+          "name": "docs.find",
+          "description": "Finds Google Docs by searching for a query in their title. Supports pagination."
+        },
+        {
+          "name": "drive.findFolder",
+          "description": "Finds a folder by name in Google Drive."
+        },
+        {
+          "name": "docs.move",
+          "description": "Moves a document to a specified folder."
+        },
+        {
+          "name": "docs.getText",
+          "description": "Retrieves the text content of a Google Doc."
+        },
+        {
+          "name": "docs.appendText",
+          "description": "Appends text to the end of a Google Doc."
+        },
+        {
+          "name": "docs.replaceText",
+          "description": "Replaces all occurrences of a given text with new text in a Google Doc."
+        },
+        {
+          "name": "docs.extractIdFromUrl",
+          "description": "Extracts the document ID from a Google Workspace URL."
+        },
+        {
+          "name": "slides.getText",
+          "description": "Retrieves the text content of a Google Slides presentation."
+        },
+        {
+          "name": "slides.find",
+          "description": "Finds Google Slides presentations by searching for a query. Supports pagination."
+        },
+        {
+          "name": "slides.getMetadata",
+          "description": "Gets metadata about a Google Slides presentation."
+        },
+        {
+          "name": "sheets.getText",
+          "description": "Retrieves the content of a Google Sheets spreadsheet."
+        },
+        {
+          "name": "sheets.getRange",
+          "description": "Gets values from a specific range in a Google Sheets spreadsheet."
+        },
+        {
+          "name": "sheets.find",
+          "description": "Finds Google Sheets spreadsheets by searching for a query. Supports pagination."
+        },
+        {
+          "name": "sheets.getMetadata",
+          "description": "Gets metadata about a Google Sheets spreadsheet."
+        },
+        {
+          "name": "drive.search",
+          "description": "Searches for files and folders in Google Drive. The query can be a simple search term, a Google Drive URL, or a full query string. For more information on query strings see: https://developers.google.com/drive/api/guides/search-files"
+        },
+        {
+          "name": "drive.downloadFile",
+          "description": "Downloads the content of a file from Google Drive to a local path. Note: Google Docs, Sheets, and Slides require specialized handling."
+        },
+        {
+          "name": "calendar.list",
+          "description": "Lists all of the user's calendars."
+        },
+        {
+          "name": "calendar.createEvent",
+          "description": "Creates a new event in a calendar."
+        },
+        {
+          "name": "calendar.listEvents",
+          "description": "Lists events from a calendar. Defaults to upcoming events."
+        },
+        {
+          "name": "calendar.getEvent",
+          "description": "Gets the details of a specific calendar event."
+        },
+        {
+          "name": "calendar.findFreeTime",
+          "description": "Finds a free time slot for multiple people to meet."
+        },
+        {
+          "name": "calendar.updateEvent",
+          "description": "Updates an existing event in a calendar."
+        },
+        {
+          "name": "calendar.respondToEvent",
+          "description": "Responds to a meeting invitation (accept, decline, or tentative)."
+        },
+        {
+          "name": "calendar.deleteEvent",
+          "description": "Deletes an event from a calendar."
+        },
+        {
+          "name": "chat.listSpaces",
+          "description": "Lists the spaces the user is a member of."
+        },
+        {
+          "name": "chat.findSpaceByName",
+          "description": "Finds a Google Chat space by its display name."
+        },
+        {
+          "name": "chat.sendMessage",
+          "description": "Sends a message to a Google Chat space."
+        },
+        {
+          "name": "chat.getMessages",
+          "description": "Gets messages from a Google Chat space."
+        },
+        {
+          "name": "chat.sendDm",
+          "description": "Sends a direct message to a user."
+        },
+        {
+          "name": "chat.findDmByEmail",
+          "description": "Finds a Google Chat DM space by a user's email address."
+        },
+        {
+          "name": "chat.listThreads",
+          "description": "Lists threads from a Google Chat space in reverse chronological order."
+        },
+        {
+          "name": "chat.setUpSpace",
+          "description": "Sets up a new Google Chat space with a display name and a list of members."
+        },
+        {
+          "name": "gmail.search",
+          "description": "Search for emails in Gmail using query parameters."
+        },
+        {
+          "name": "gmail.get",
+          "description": "Get the full content of a specific email message."
+        },
+        {
+          "name": "gmail.downloadAttachment",
+          "description": "Downloads an attachment from a Gmail message to a local file."
+        },
+        {
+          "name": "gmail.modify",
+          "description": "Modify a Gmail message. Supported modifications include:\n    - Add labels to a message.\n    - Remove labels from a message.\nThere are a list of system labels that can be modified on a message:\n    - INBOX: removing INBOX label removes the message from inbox and archives the message.\n    - SPAM: adding SPAM label marks a message as spam.\n    - TRASH: adding TRASH label moves a message to trash.\n    - UNREAD: removing UNREAD label marks a message as read.\n    - STARRED: adding STARRED label marks a message as starred.\n    - IMPORTANT: adding IMPORTANT label marks a message as important."
+        },
+        {
+          "name": "gmail.send",
+          "description": "Send an email message."
+        },
+        {
+          "name": "gmail.createDraft",
+          "description": "Create a draft email message."
+        },
+        {
+          "name": "gmail.sendDraft",
+          "description": "Send a previously created draft email."
+        },
+        {
+          "name": "gmail.listLabels",
+          "description": "List all Gmail labels in the user's mailbox."
+        },
+        {
+          "name": "time.getCurrentDate",
+          "description": "Gets the current date. Returns both UTC (for calendar/API use) and local time (for display to the user), along with the timezone."
+        },
+        {
+          "name": "time.getCurrentTime",
+          "description": "Gets the current time. Returns both UTC (for calendar/API use) and local time (for display to the user), along with the timezone."
+        },
+        {
+          "name": "time.getTimeZone",
+          "description": "Gets the local timezone. Note: timezone is also included in getCurrentDate and getCurrentTime responses."
+        },
+        {
+          "name": "people.getUserProfile",
+          "description": "Gets a user's profile information."
+        },
+        {
+          "name": "people.getMe",
+          "description": "Gets the profile information of the authenticated user."
+        }
+      ]
+    }
+  ]
+}
