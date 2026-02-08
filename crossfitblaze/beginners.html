@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New to CrossFit? Beginner's Guide Naples, FL | CrossFit Blaze</title>
+    <meta name="description" content="New to CrossFit? Start here! Complete beginner's guide to CrossFit at CrossFit Blaze Naples, FL. Learn what to expect, how to start, and get your first class free.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: #1a1a1a; padding: 15px 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #ff6b00; font-size: 24px; font-weight: bold; text-decoration: none; }
+        .phone { color: #fff; font-size: 18px; }
+        .phone a { color: #ff6b00; text-decoration: none; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); padding: 80px 0; text-align: center; color: white; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 30px; opacity: 0.95; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+        
+        /* What is CrossFit */
+        .what-is { padding: 60px 0; }
+        .what-is-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .what-is h2 { font-size: 2.2rem; margin-bottom: 25px; color: #1a1a1a; }
+        .what-is p { margin-bottom: 20px; font-size: 1.1rem; color: #555; }
+        .what-is-image { background: linear-gradient(135deg, #333 0%, #555 100%); min-height: 350px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; }
+        
+        /* What to Expect */
+        .expect { padding: 60px 0; background: #f8f8f8; }
+        .expect h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .expect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .expect-card { background: white; padding: 35px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .expect-icon { font-size: 2.5rem; margin-bottom: 20px; }
+        .expect-card h3 { color: #ff6b00; margin-bottom: 15px; }
+        
+        /* Myths */
+        .myths { padding: 60px 0; }
+        .myths h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .myth-item { max-width: 900px; margin: 0 auto 30px; display: grid; grid-template-columns: auto 1fr; gap: 25px; align-items: start; }
+        .myth-icon { font-size: 2rem; }
+        .myth-content h3 { color: #d32f2f; margin-bottom: 8px; font-size: 1.1rem; }
+        .myth-content p { color: #2e7d32; font-weight: 500; }
+        
+        /* First Class */
+        .first-class { padding: 60px 0; background: #1a1a1a; color: white; }
+        .first-class h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .timeline { max-width: 800px; margin: 0 auto; }
+        .timeline-item { display: flex; margin-bottom: 40px; }
+        .timeline-number { width: 60px; height: 60px; background: #ff6b00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin-right: 30px; flex-shrink: 0; }
+        .timeline-content h3 { margin-bottom: 10px; font-size: 1.3rem; }
+        .timeline-content p { opacity: 0.85; }
+        
+        /* CTA */
+        .cta { padding: 80px 0; text-align: center; background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); color: white; }
+        .cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.95; }
+        .btn { display: inline-block; background: #1a1a1a; color: white; padding: 18px 50px; font-size: 1.3rem; font-weight: bold; text-decoration: none; border-radius: 5px; transition: all 0.3s; }
+        .btn:hover { background: #333; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        
+        /* Getting Started */
+        .getting-started { padding: 60px 0; background: #f8f8f8; }
+        .getting-started h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .options { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .option { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; border: 2px solid transparent; }
+        .option.recommended { border-color: #ff6b00; position: relative; }
+        .recommended-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #ff6b00; color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
+        .option h3 { margin-bottom: 15px; color: #1a1a1a; }
+        .option p { margin-bottom: 20px; color: #666; }
+        .option .btn-secondary { display: inline-block; background: transparent; color: #ff6b00; padding: 12px 30px; font-weight: bold; text-decoration: none; border: 2px solid #ff6b00; border-radius: 5px; transition: all 0.3s; }
+        .option .btn-secondary:hover { background: #ff6b00; color: white; }
+        
+        /* Footer */
+        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
+        footer p { opacity: 0.7; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .what-is-grid { grid-template-columns: 1fr; }
+            .myth-item { grid-template-columns: 1fr; text-align: center; }
+            .timeline-item { flex-direction: column; text-align: center; }
+            .timeline-number { margin: 0 auto 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">CROSSFIT BLAZE</a>
+            <div class="phone">Call Us: <a href="tel:2392605242">(239) 260-5242</a></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>New to CrossFit?</h1>
+            <h2>Everything You Need to Know to Get Started</h2>
+            <p>CrossFit can seem intimidating from the outside. Here's the truth: it's just fitness, and it's for everyone — especially beginners.</p>
+        </div>
+    </section>
+
+    <section class="what-is">
+        <div class="container">
+            <div class="what-is-grid">
+                <div>
+                    <h2>What Is CrossFit, Really?</h2>
+                    <p>CrossFit is a fitness program that combines weightlifting, cardio, and gymnastics into constantly varied workouts. Every day is different, so you never get bored.</p>
+                    <p>But here's what CrossFit really is: it's a supportive community of people working together to get healthier, stronger, and more confident.</p>
+                    <p>At CrossFit Blaze in Naples, we focus on functional movements — exercises that help you in real life. Getting up off the floor, carrying groceries, playing with your kids. CrossFit makes everyday life easier.</p>
+                </div>
+                <div class="what-is-image">
+                    💪
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="expect">
+        <div class="container">
+            <h2>What to Expect at CrossFit Blaze</h2>
+            <div class="expect-grid">
+                <div class="expect-card">
+                    <div class="expect-icon">👋</div>
+                    <h3>A Warm Welcome</h3>
+                    <p>Walk in and you'll be greeted by name. Our members remember what it's like to be new and go out of their way to make you feel comfortable.</p>
+                </div>
+                <div class="expect-card">
+                    <div class="expect-icon">🎓</div>
+                    <h3>Expert Coaching</h3>
+                    <p>Our coaches are with you every step of the way. They'll teach you proper form, scale workouts to your level, and push you just enough.</p>
+                </div>
+                <div class="expect-card">
+                    <div class="expect-icon">📊</div>
+                    <h3>Tracked Progress</h3>
+                    <p>We record your workouts so you can see your improvements over time. There's nothing better than looking back at how far you've come.</p>
+                </div>
+                <div class="expect-card">
+                    <div class="expect-icon">🎉</div>
+                    <h3>Celebration</h3>
+                    <p>Hit a personal record? Finish your first full workout? The whole class celebrates with you. This community support is what makes CrossFit special.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="myths">
+        <div class="container">
+            <h2>CrossFit Myths — Busted</h2>
+            <div class="myth-item">
+                <div class="myth-icon">❌</div>
+                <div class="myth-content">
+                    <h3>MYTH: "CrossFit is too hard for beginners"</h3>
+                    <p>✓ FACT: Every workout is scaled to YOUR fitness level. Can't do a push-up? We'll give you a version you can do. Everyone starts somewhere.</p>
+                </div>
+            </div>
+            <div class="myth-item">
+                <div class="myth-icon">❌</div>
+                <div class="myth-content">
+                    <h3>MYTH: "You have to be fit to start"</h3>
+                    <p>✓ FACT: That's like saying you need to be clean before you take a shower. CrossFit IS how you get fit — no prior fitness required.</p>
+                </div>
+            </div>
+            <div class="myth-item">
+                <div class="myth-icon">❌</div>
+                <div class="myth-content">
+                    <h3>MYTH: "CrossFit is dangerous"</h3>
+                    <p>✓ FACT: With proper coaching (which we provide), CrossFit is safer than working out alone. We prioritize form and safety above everything.</p>
+                </div>
+            </div>
+            <div class="myth-item">
+                <div class="myth-icon">❌</div>
+                <div class="myth-content">
+                    <h3>MYTH: "Everyone will be judging me"</h3>
+                    <p>✓ FACT: The CrossFit community is incredibly supportive. Everyone is focused on their own workout and cheering for YOU, not judging you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="first-class">
+        <div class="container">
+            <h2>Your First Class: What Happens</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Arrive 10 Minutes Early</h3>
+                        <p>Meet your coach, get a tour of the gym, and fill out a quick waiver. We'll answer any questions you have.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Warm-Up Together</h3>
+                        <p>The class starts with a group warm-up to get your body ready. Don't worry — we'll show you exactly what to do.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Skill/Strength Work</h3>
+                        <p>Learn or practice a specific movement with light weight. This is where the coaching happens.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>The Workout (WOD)</h3>
+                        <p>The main event! A short, intense workout scaled just for you. It might be 10-20 minutes of hard work.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Cool Down & High Fives</h3>
+                        <p>Stretch together, log your results, and celebrate finishing. You'll leave feeling accomplished.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Try Your First Class?</h2>
+            <p>Your first class is on us. No experience needed. No pressure. Just show up and we'll take care of the rest.</p>
+            <a href="https://crossfitblaze.com/free-intro" class="btn">Claim My Free First Class →</a>
+        </div>
+    </section>
+
+    <section class="getting-started">
+        <div class="container">
+            <h2>Ways to Get Started</h2>
+            <div class="options">
+                <div class="option">
+                    <h3>🚀 Free Intro Class</h3>
+                    <p>Try one class completely free. Meet the coaches, experience the community, and see if CrossFit is for you.</p>
+                    <a href="https://crossfitblaze.com/free-intro" class="btn-secondary">Sign Up Free</a>
+                </div>
+                <div class="option recommended">
+                    <div class="recommended-badge">MOST POPULAR</div>
+                    <h3>🎯 3-Class Free Trial</h3>
+                    <p>Get 3 complimentary classes including a one-on-one OnRamp session. The best way to truly experience CrossFit.</p>
+                    <a href="https://crossfitblaze.com/free-trial.html" class="btn-secondary">Claim 3 Free Classes</a>
+                </div>
+                <div class="option">
+                    <h3>📞 Call to Chat</h3>
+                    <p>Have questions? Want to talk to a real person? Give us a call and we'll help you figure out the best way to start.</p>
+                    <a href="tel:2392605242" class="btn-secondary">Call (239) 260-5242</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>CrossFit Blaze | 6563 Taylor Rd #8, Naples, FL 34109 | (239) 260-5242</p>
+            <p style="margin-top: 10px;">© 2026 CrossFit Blaze. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

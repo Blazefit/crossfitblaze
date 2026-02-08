@@ -1,0 +1,17 @@
+{
+  "lastUpdated": "2026-02-07",
+  "summary": {
+    "totalLeadsThisWeek": 0,
+    "newLeadsToday": 0,
+    "followUpsSent": 0,
+    "responsesReceived": 0,
+    "conversions": 0
+  },
+  "conversionRates": {
+    "leadToTrial": 0,
+    "trialToMember": 0,
+    "responseRate": 0
+  },
+  "status": "setup_in_progress",
+  "notes": "Lead tracking system initialized. Awaiting real data integration from Kilo/email sources."
+}

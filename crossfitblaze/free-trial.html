@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Free CrossFit Classes Naples, FL | Try CrossFit Blaze Free</title>
+    <meta name="description" content="Try CrossFit FREE! Get 3 complimentary classes at CrossFit Blaze in Naples, FL. No commitment, no pressure. See if CrossFit is right for you. Sign up today!">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: #1a1a1a; padding: 15px 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #ff6b00; font-size: 24px; font-weight: bold; text-decoration: none; }
+        .phone { color: #fff; font-size: 18px; }
+        .phone a { color: #ff6b00; text-decoration: none; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); padding: 80px 0; text-align: center; color: white; }
+        .hero-badge { display: inline-block; background: #fff; color: #ff6b00; padding: 8px 20px; border-radius: 50px; font-weight: bold; font-size: 0.95rem; margin-bottom: 25px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 30px; opacity: 0.95; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; opacity: 0.9; }
+        
+        /* What's Included */
+        .includes { padding: 60px 0; background: #f8f8f8; }
+        .includes h2 { text-align: center; font-size: 2.2rem; margin-bottom: 15px; }
+        .includes > .container > p { text-align: center; color: #666; margin-bottom: 50px; font-size: 1.1rem; }
+        .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .include-item { background: white; padding: 35px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
+        .include-number { width: 50px; height: 50px; background: #ff6b00; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 20px; }
+        .include-item h3 { margin-bottom: 12px; color: #1a1a1a; }
+        
+        /* How It Works */
+        .how-it-works { padding: 60px 0; }
+        .how-it-works h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .steps { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; }
+        .step { text-align: center; max-width: 300px; }
+        .step-icon { font-size: 3rem; margin-bottom: 15px; }
+        .step h3 { color: #ff6b00; margin-bottom: 10px; }
+        
+        /* Form Section */
+        .form-section { padding: 80px 0; background: #1a1a1a; }
+        .form-container { max-width: 600px; margin: 0 auto; background: white; padding: 50px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .form-container h2 { text-align: center; color: #1a1a1a; margin-bottom: 10px; }
+        .form-container > p { text-align: center; color: #666; margin-bottom: 35px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #ff6b00; }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+        .submit-btn { width: 100%; background: #ff6b00; color: white; padding: 18px; font-size: 1.2rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .submit-btn:hover { background: #e55a00; transform: translateY(-2px); }
+        .form-note { text-align: center; margin-top: 20px; font-size: 0.9rem; color: #888; }
+        
+        /* Trust Badges */
+        .trust { padding: 40px 0; background: #f8f8f8; text-align: center; }
+        .trust h3 { margin-bottom: 25px; color: #666; font-weight: 400; }
+        .trust-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; align-items: center; }
+        .trust-item { color: #444; font-weight: 600; }
+        
+        /* FAQ */
+        .faq { padding: 60px 0; }
+        .faq h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .faq-item { max-width: 800px; margin: 0 auto 25px; padding: 25px; background: #f8f8f8; border-radius: 10px; }
+        .faq-item h3 { color: #ff6b00; margin-bottom: 10px; font-size: 1.1rem; }
+        
+        /* Footer */
+        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
+        footer p { opacity: 0.7; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .form-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">CROSSFIT BLAZE</a>
+            <div class="phone">Call Us: <a href="tel:2392605242">(239) 260-5242</a></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🔥 LIMITED TIME OFFER</div>
+            <h1>Try CrossFit FREE</h1>
+            <h2>Get 3 Complimentary Classes — No Commitment Required</h2>
+            <p>Experience CrossFit Blaze in Naples, FL with zero risk. See if it's right for you before making any decision.</p>
+        </div>
+    </section>
+
+    <section class="includes">
+        <div class="container">
+            <h2>What's Included in Your Free Trial</h2>
+            <p>Everything you need to experience real CrossFit training</p>
+            <div class="includes-grid">
+                <div class="include-item">
+                    <div class="include-number">1</div>
+                    <h3>OnRamp Session</h3>
+                    <p>One-on-one intro where a coach teaches you the fundamental movements and assesses your fitness level.</p>
+                </div>
+                <div class="include-item">
+                    <div class="include-number">2</div>
+                    <h3>Group Class #1</h3>
+                    <p>Your first full CrossFit workout with the group. Scaled to your ability, guided by expert coaches.</p>
+                </div>
+                <div class="include-item">
+                    <div class="include-number">3</div>
+                    <h3>Group Class #2</h3>
+                    <p>Come back for a second class to really get a feel for the community and the workouts.</p>
+                </div>
+                <div class="include-item">
+                    <div class="include-number">✓</div>
+                    <h3>Goal Consultation</h3>
+                    <p>Sit down with a coach to discuss your goals and get a personalized recommendation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Your Free Trial Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">📝</div>
+                    <h3>1. Sign Up</h3>
+                    <p>Fill out the form below to claim your free classes. We'll contact you within 24 hours.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📅</div>
+                    <h3>2. Schedule</h3>
+                    <p>Pick a time for your OnRamp session that works with your schedule.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">💪</div>
+                    <h3>3. Train</h3>
+                    <p>Complete your 3 free sessions. No pressure, no strings attached.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <h3>Join hundreds of Naples residents who've transformed their fitness</h3>
+            <div class="trust-badges">
+                <span class="trust-item">⭐⭐⭐⭐⭐ 5-Star Reviews</span>
+                <span class="trust-item">🏆 Best Gym in Naples</span>
+                <span class="trust-item">👥 500+ Members</span>
+                <span class="trust-item">🎯 10+ Years Experience</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="signup">
+        <div class="container">
+            <div class="form-container">
+                <h2>Claim Your 3 Free Classes</h2>
+                <p>Fill out the form and we'll contact you within 24 hours</p>
+                <form action="https://crossfitblaze.com/free-intro" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(239) 555-1234">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Fitness Experience</label>
+                        <select id="experience" name="experience">
+                            <option value="">Select your experience level</option>
+                            <option value="beginner">Complete beginner</option>
+                            <option value="some">Some exercise experience</option>
+                            <option value="regular">Regularly active</option>
+                            <option value="athlete">Former/current athlete</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">What are your fitness goals?</label>
+                        <textarea id="goals" name="goals" placeholder="Lose weight, build muscle, improve health, etc."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Get My 3 Free Classes →</button>
+                    <p class="form-note">🔒 Your information is secure. No spam, ever. Unsubscribe anytime.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>Is this really free? What's the catch?</h3>
+                <p>100% free, no catch. We believe the best way to see if CrossFit is right for you is to try it. After your 3 classes, you can decide if you want to continue — no pressure whatsoever.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do I need to be in shape first?</h3>
+                <p>Not at all! Our free trial includes an OnRamp session where we teach you everything from scratch. We scale every workout to your current fitness level.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What should I bring?</h3>
+                <p>Just workout clothes, athletic shoes, and a water bottle. We provide everything else including any equipment you'll need.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How long are the classes?</h3>
+                <p>Most classes run about 45-60 minutes including warm-up, workout, and cool-down. The OnRamp session is about 45 minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>CrossFit Blaze | 6563 Taylor Rd #8, Naples, FL 34109 | (239) 260-5242</p>
+            <p style="margin-top: 10px;">© 2026 CrossFit Blaze. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
