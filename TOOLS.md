@@ -37,4 +37,14 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+### Social Media Accounts
+
+**Instagram - CrossFit Blaze**
+- Username: crossfitblaze
+- Password: Blaze2025!
+- Status: Credentials received 2026-02-09
+- Purpose: Content posting, performance tracking
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.
