@@ -123,4 +123,12 @@ Inspired by @ericosiu's article. All agents/crons share one directory:
 - Himalaya: Working, reads inbox via IMAP
 - Config location: `/Users/daneel/Library/Application Support/himalaya/config.toml`
 
+### ⚠️ CRITICAL EMAIL RULE (set by Jason 2026-02-11 — DO NOT FORGET)
+- **NEVER send emails directly to clients/contacts**
+- **ALWAYS send drafts to Jason first** (jason@crossfitblaze.com or via Telegram)
+- Jason sends them himself from his own email address
+- Only exception: Jason explicitly says "send this to the client"
+- This applies even if he says "send drafts" — that means send DRAFTS TO HIM, not to the recipients
+- Violated this rule on 2026-02-11: sent 3 client emails directly from cosdaneelolivaw@gmail.com instead of forwarding drafts to Jason. Don't repeat this.
+
 ---
