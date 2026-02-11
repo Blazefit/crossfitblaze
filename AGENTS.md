@@ -14,8 +14,23 @@ Before doing anything else:
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+5. Read `shared-context/priorities.md` — the current priority stack
 
 Don't ask permission. Just do it.
+
+## Shared Brain (`shared-context/`)
+
+All agents and cron jobs share one directory. Read before acting, write your outputs there.
+
+- **`priorities.md`** — What matters right now. Read this before every run.
+- **`agent-outputs/`** — Drop your work here. Format: `{agent}-{type}-{date}.md`
+- **`feedback/`** — Jason's approvals/rejections. Check before recommending.
+- **`kpis/`** — Live metrics any agent can reference.
+- **`content-calendar/`** — What's planned, published, and gaps.
+
+**For cron jobs / sub-agents:** Read `shared-context/priorities.md` and recent `agent-outputs/` before running. Write your results to `agent-outputs/`. This is how agents coordinate without talking to each other.
+
+See `shared-context/README.md` for full architecture.
 
 ## Memory
 
