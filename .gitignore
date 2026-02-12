@@ -33,3 +33,4 @@ npm-debug.log*
 # Database files (if they contain live data)
 *.db
 !*.db.example
+.secrets/
