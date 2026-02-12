@@ -131,4 +131,16 @@ Inspired by @ericosiu's article. All agents/crons share one directory:
 - This applies even if he says "send drafts" — that means send DRAFTS TO HIM, not to the recipients
 - Violated this rule on 2026-02-11: sent 3 client emails directly from cosdaneelolivaw@gmail.com instead of forwarding drafts to Jason. Don't repeat this.
 
+### ⚠️ Gmail BANNED (2026-02-11)
+- cosdaneelolivaw@gmail.com is **permanently banned** by Google (bot detection)
+- **New email:** daneel@aimissioncontrol.us (Zoho Mail, domain on Cloudflare)
+- Jason setting up Zoho — once live, update Himalaya config + all cron references
+- Upwork account (tied to banned Gmail) needs recreation with new email
+
+### 🌐 Managed Browser (2026-02-11)
+- **Use `profile="openclaw"` for automation** — always connected, no extension click needed
+- **Use `profile="chrome"` only when you need Jason's logged-in sessions** — requires extension click
+- Keep-alive cron restarts managed browser if it goes down
+- Port 18800, user data at `~/.openclaw/browser/openclaw/user-data`
+
 ---
