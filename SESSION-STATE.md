@@ -4,7 +4,14 @@ This file is the agent's "RAM" — survives compaction, restarts, distractions.
 Chat history is a BUFFER. This file is STORAGE.
 
 ## Current Task
-Mission Control v2 LIVE and functional — Jason testing. May switch models soon.
+Mission Control v2 LIVE — User confirmed Calendar view working. Implementing live data feed integration.
+
+## Mission Control Live Status
+- **URL:** https://alverta-huskier-right.ngrok-free.dev
+- **Status:** ✅ LIVE with real-time Convex data
+- **Verified:** Calendar showing Morning Briefing, Valentine Partner WOD, Corporate Wellness Outreach, Tom Member Spotlight
+- **Data Source:** Convex (giant-porcupine-828) — updates in real-time
+- **Integration:** Cron jobs → Mission Control via `scripts/mission-control-feed.sh`
 
 ## Mission Control Status
 - **URL:** https://alverta-huskier-right.ngrok-free.dev
