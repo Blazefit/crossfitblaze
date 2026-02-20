@@ -15,12 +15,12 @@ Mission Control v2 LIVE and functional — Jason testing. May switch models soon
 
 ## Agent Hierarchy & Model Assignments (ACTIVE)
 
-### Cron Job Model Routing (31 jobs configured)
+### Cron Job Model Routing (32 jobs configured)
 
 | Category | Model | Jobs | Cost |
 |----------|-------|------|------|
 | **Coordination** | Opus 4.6 | Henry - Chief of Staff (8 AM, 8 PM) | $$$$ |
-| **Heavy Workers** | Kimi K2.5 | Daily Briefing, AI News, Night Owl, Closer, Spark, Ops, Builder, Strategist, Outreach, Freelance, Debuggers, TaskFlow | $$ |
+| **Heavy Workers** | Kimi K2.5 | Daily Briefing, AI News, Night Owl, Closer, Spark, Ops, Builder, Strategist, Outreach, Freelance, Debuggers, TaskFlow, **Mission Advancement (2 AM)** | $$ |
 | **Heartbeat** | Gemini Flash | System checks, Email checks (30 min), Health checks, Update checks | $ |
 
 ### Agent Roles

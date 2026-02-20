@@ -60,3 +60,25 @@ openrouter/anthropic/claude-haiku
 - Model switching happens at spawn time via `--model` flag
 - Henry delegates to specialists, doesn't do heavy lifting
 - Cost savings: ~70% by using Kimi for bulk work vs Opus
+
+## Mission Advancement Job (2 AM Daily)
+
+**Job:** Mission Advancement - Build Autonomous Org  
+**Schedule:** 2:00 AM daily  
+**Model:** Kimi K2.5  
+**Agent:** Mission Architect  
+
+**Purpose:** Directly advances the core mission: "Build an autonomous organization of AI agents that does work for Jason and produces value 24/7"
+
+**Rotating Focus (cycles weekly):**
+1. **Agent Recruitment** - Identify gaps, design new agent roles, write specs
+2. **Automation Build** - Find repetitive tasks, design automations
+3. **Process Optimization** - Review outputs, fix bottlenecks
+4. **Capability Expansion** - Research new tools/skills on ClawHub
+5. **Knowledge Capture** - Document lessons learned, update MEMORY.md
+6. **System Hardening** - Improve monitoring, reliability
+7. **Value Metrics** - Track productivity, update KPIs
+
+**Output:** Written to `shared-context/agent-outputs/mission-advancement-YYYY-MM-DD.md`
+
+This ensures every night we're one step closer to full autonomy.
