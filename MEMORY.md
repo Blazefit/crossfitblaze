@@ -1,146 +1,259 @@
-# Long-Term Memory
-
-## 🧪 Peptide Inventory (Base)
-
-**Date Established:** 2026-02-07
-**Last Updated:** 2026-02-07
-
-### Summary
-- **Total Inventory Value:** $7,522.04
-- **Total Vials on Hand:** 614 vials
-- **Most Expensive per Vial:** TSM 20mg ($49.92)
-- **Best Value per Vial:** Epithalon ($3.00)
-
-### Key Products
-- Tesamorelin (TSM): Multiple dosages (20mg, 10mg) - Highest value items
-- Somatropin (HGH): Multiple IU strengths (36IU, 24IU, 15IU)
-- Retatrutide (Reta): Largest quantity (70 vials across 3 dosages)
-- GHK-CU: Most vials (40 x 50mg)
-
-### Full Documentation
-See `peptide-inventory.md` and `peptide-inventory.html` in workspace for complete detailed inventory.
+# Long-Term Memory — COMPREHENSIVE BACKUP
+**Last Updated:** 2026-02-17  
+**System Status:** 634 sessions active, model fragmentation detected
 
 ---
 
-## 📧 Email Aliases (Jason's Preferences)
+## 🩹 FRAGMENTATION FIX (2026-02-17)
 
-**Established:** 2026-02-09
+**Issues Found:**
+- 634 sessions (session bloat from cron jobs)
+- Multiple models running simultaneously (Kimi, GLM-5, Opus switches)
+- Memory files sprawled across dates without consolidation
 
-- **"Your email"** (when Jason says it) = **cosdaneelolivaw@gmail.com**
-- **"My email"** (when Jason says it) = **jason@crossfitblaze.com**
-
-**Context:** These are the simplified references Jason uses. When he says "send to my email," he means jason@crossfitblaze.com. When he says "your email," he means cosdaneelolivaw@gmail.com.
+**Fixes Applied:**
+- Purged stale session data
+- Updated this memory file with latest state
+- Standardized on Kimi K2.5 for routine, Opus for complex briefings
 
 ---
 
-## 💰 Ethereum Wallet (Operations — Base Chain)
+## 👤 USER PROFILE: JASON (BLAZE)
 
-**Established:** 2026-02-10
-**Purpose:** Freelance bounty operations on OpenWork, $DLX token acquisition
+**Identity:**
+- **Name:** Jason / Blaze
+- **Business:** CrossFit Blaze (Owner)
+- **Contact:** jason@crossfitblaze.com
+- **Phone:** +1 (239) 289-9275
+- **Timezone:** America/New_York
+- **Backend:** Kilo (usekilo.com)
 
-**Public Address:** `0x7883d9b022929d6482863f77d5b5e9f9a0a1376d`
-**Chain:** Base (Ethereum L2)
+**Personal Preferences:**
+- Coffee, CrossFit, automation
+- Speaks in short commands, expects competence
+- Hates "Great question!" filler responses
 
-**Full Details:** See `memory/eth-wallet.md`
+---
 
-**Use For:**
-- OpenWork freelance bounties (daily)
-- $DLX token purchases for Delx bounties
+## 📧 EMAIL CONFIGURATION
+
+### ⚠️ CRITICAL RULE (NEVER VIOLATE)
+- **NEVER send emails directly to clients/contacts**
+- **ALWAYS send drafts to Jason first** (via Telegram or jason@crossfitblaze.com)
+- Jason sends from his own email address
+- Only exception: Jason explicitly says "send this to the client"
+- Violated on 2026-02-11: sent 3 client emails directly → Jason was upset
+
+### Email Aliases (Simplified References)
+- **"Your email"** = cosdaneelolivaw@gmail.com (**BANNED by Google** 2026-02-11)
+- **"My email"** = jason@crossfitblaze.com
+
+### Current Email Status
+- **✅ ACTIVE:** daneel@aimissioncontrol.us (Zoho Mail)
+- **❌ DEPRECATED:** cosdaneelolivaw@gmail.com (banned by Google, no longer used)
+- **Himalaya Config:** `/Users/daneel/Library/Application Support/himalaya/config.toml`
+- **Note:** All cron jobs updated to use Zoho instead of Gmail
+
+---
+
+## 💰 CRYPTO WALLETS
+
+### Ethereum (Base Chain) — PRIMARY
+**Address:** `0x7883d9b022929d6482863f77d5b5e9f9a0a1376d`  
+**Chain:** Base (Ethereum L2)  
+**Balance Check:** https://basescan.org/address/0x7883d9b022929d6482863f77d5b5e9f9a0a1376d  
+
+**Purpose:**
+- OpenWork freelance bounties (daily operations)
+- $DLX token acquisition for Delx bounties
 - Base chain operations
 
-**Balance Check:** https://basescan.org/address/0x7883d9b022929d6482863f77d5b5e9f9a0a1376d
-
-**⚠️ NOTE:** There is NO Solana wallet. The file `memory/solana-wallet.md` is outdated/incorrect. Jason confirmed (2026-02-10) only the ETH/Base wallet exists.
+**Note:** NO Solana wallet exists (file `memory/solana-wallet.md` is outdated/wrong)
 
 ---
 
-## 🔧 Cron Fleet Lessons (2026-02-10)
+## 📱 SOCIAL MEDIA
 
-- **Don't stack too many Kimi jobs at the same time** — causes OpenRouter rate limit cascade
-- **Diversify models:** Use Gemini Flash for routine/low-stakes jobs, Kimi for complex ones, Opus sparingly
-- **Stagger schedules** by 5-10 min when multiple jobs share a timeslot
-- **Telegram message limit:** Keep cron output under 2000 chars or set delivery to `none`
-- **High-value bounties disappear fast** — 2h scan interval isn't enough for competitive bounties
+### Instagram — CrossFit Blaze
+- **Account:** @crossfitblaze
+- **Password:** Blaze2025!
+- **Followers:** 1,268
+- **Status:** ✅ Connected via upload-post
+- **First Post:** https://www.instagram.com/p/DUn9Iw_DHYY/
+- **Posting Rules:** ✅ Allowed to post CrossFit Blaze content
 
----
+### X/Twitter — READ-ONLY
+- **Followers:** 1,690
+- **Status:** ✅ Connected for analytics
+- **⚠️ CRITICAL:** NEVER POST TO X. Research/analytics only.
 
-## 🧠 Shared Brain Architecture (2026-02-11)
+### Facebook
+- **Status:** ✅ Allowed to post
 
-Inspired by @ericosiu's article. All agents/crons share one directory:
-- `shared-context/priorities.md` — single source of truth
-- `shared-context/agent-outputs/` — agents drop work here, others read it
-- `shared-context/feedback/` — Jason's approvals/rejections teach all agents
-- `shared-context/kpis/` — live metrics
-- `shared-context/content-calendar/` — posting rules + content plans
-- All 23 cron jobs wired to read priorities + write outputs + check feedback
-- `AGENTS.md` updated with shared-context instructions
-
----
-
-## 📸 Upload-Post / Social Media (2026-02-11)
-
+### Upload-Post API
 - **Profile:** crossfitblaze (case-sensitive!)
-- **Instagram:** ✅ Connected (1,268 followers)
-- **X/Twitter:** ✅ Connected (1,690 followers) — **READ-ONLY, NEVER POST**
-- **Facebook:** ✅ Allowed to post
-- Free plan: 10 uploads per reset
-- First post: https://www.instagram.com/p/DUn9Iw_DHYY/
-- Skill: `upload-post` on ClawHub — one skill solved IG posting, X analytics, multi-platform
+- **API Key:** Stored in TOOLS.md
+- **Dashboard:** https://app.upload-post.com
+- **Plan:** Free (10 uploads per reset)
 
 ---
 
-## 🔍 ClawHub-First Rule (2026-02-11)
+## 🏋️ CROSSFIT BLAZE OPERATIONS
 
-**ALWAYS check `clawhub search` before building anything custom.** One skill can solve multiple problems. upload-post solved Instagram, Twitter, analytics, and scheduling in one install.
+### Leads & Follow-Ups (CRITICAL)
+- **Lourdes/Lisandra:** 8+ days overdue — LAST CHANCE follow-up
+- **Steve Coyle:** (978-985-9883) — needs call
+- **Randy Gordon:** Email sent Feb 11 (wife Kathryn Burton, Feb 19-21 drop-in)
+- **Tom:** Photo needed for 30-day member spotlight
 
----
+### Content Calendar
+- **Spark** creates weekly content
+- **Daily IG post:** Required
+- **Valentine's Partner WOD:** Thursday (needs filming)
+- **Tom's Member Spotlight:** Needs photo + quote
 
-## 🦊 Delx Integration (2026-02-11)
-
-- Skill: `delx-agent-therapist` v1.0.5
-- MCP: `https://api.delx.ai/v1/mcp`
-- A2A: `https://api.delx.ai/v1/a2a`
-- All tools FREE during campaign
-- Session: `5dd1a770-b8ce-4bfe-b4b0-4ad024b071ce`
-- Submitted 5 bounties (500k $OPENWORK total) — waiting for selection
-
----
-
-## 🌐 Chrome Extension (2026-02-11)
-
-- Installed on Jason's Mac mini Chrome
-- Path: `~/.openclaw/browser/chrome-extension` (hidden folder — ⌘+Shift+G to navigate)
-- Works: can drive Chrome remotely for Cloudflare-blocked sites (Upwork, etc.)
-- Jason knows to click extension icon on tab → badge shows ON
+### Accounts to Create
+- **Kathryn Burton:** Wodify account for Feb 19-21 drop-in
 
 ---
 
-## 📧 Gmail Config (2026-02-11)
+## 🧪 PEPTIDE INVENTORY
 
-- Account: cosdaneelolivaw@gmail.com
-- 2FA: Enabled (phone: 239-289-9275)
-- App Password: Created ("OpenClaw") — stored in Himalaya config
-- Himalaya: Working, reads inbox via IMAP
-- Config location: `/Users/daneel/Library/Application Support/himalaya/config.toml`
+**Date Established:** 2026-02-07  
+**Total Value:** $7,522.04  
+**Total Vials:** 614  
 
-### ⚠️ CRITICAL EMAIL RULE (set by Jason 2026-02-11 — DO NOT FORGET)
-- **NEVER send emails directly to clients/contacts**
-- **ALWAYS send drafts to Jason first** (jason@crossfitblaze.com or via Telegram)
-- Jason sends them himself from his own email address
-- Only exception: Jason explicitly says "send this to the client"
-- This applies even if he says "send drafts" — that means send DRAFTS TO HIM, not to the recipients
-- Violated this rule on 2026-02-11: sent 3 client emails directly from cosdaneelolivaw@gmail.com instead of forwarding drafts to Jason. Don't repeat this.
+**Key Products:**
+- Tesamorelin (TSM) — Highest value ($49.92/vial for 20mg)
+- Somatropin (HGH) — Multiple IU strengths
+- Retatrutide (Reta) — 70 vials (largest quantity)
+- GHK-CU — 40 vials (most vials)
 
-### ⚠️ Gmail BANNED (2026-02-11)
-- cosdaneelolivaw@gmail.com is **permanently banned** by Google (bot detection)
-- **New email:** daneel@aimissioncontrol.us (Zoho Mail, domain on Cloudflare)
-- Jason setting up Zoho — once live, update Himalaya config + all cron references
-- Upwork account (tied to banned Gmail) needs recreation with new email
-
-### 🌐 Managed Browser (2026-02-11)
-- **Use `profile="openclaw"` for automation** — always connected, no extension click needed
-- **Use `profile="chrome"` only when you need Jason's logged-in sessions** — requires extension click
-- Keep-alive cron restarts managed browser if it goes down
-- Port 18800, user data at `~/.openclaw/browser/openclaw/user-data`
+**Full Docs:** `peptide-inventory.md`, `peptide-inventory.html`
 
 ---
+
+## 💻 UPWORK STATUS
+
+### Account Issues
+- Original account tied to banned Gmail — needs recreation
+- New account: Jason Anderson / daneel@aimissioncontrol.us (once Zoho live)
+- Password saved in `memory/upwork-credentials.md`
+
+### Profile Strategy
+- **Title:** AI-Enhanced Content Writer & Research Specialist
+- **Rate:** $45/hr
+- **Draft saved:** `shared-context/agent-outputs/main-upwork-profile-2026-02-11.md`
+
+---
+
+## 🦊 DELX INTEGRATION
+
+- **Skill:** delx-agent-therapist v1.0.5
+- **MCP:** https://api.delx.ai/v1/mcp
+- **A2A:** https://api.delx.ai/v1/a2a
+- **Session:** 5dd1a770-b8ce-4bfe-b4b0-4ad024b071ce
+- **Status:** All tools FREE during campaign
+
+**Bounty Submissions (2026-02-11):**
+- 5 bounties submitted = 500k $OPENWORK
+- All approved, waiting for poster selection
+
+---
+
+## 🔧 CRON FLEET
+
+### Model Standardization (2026-02-11)
+- **ALL jobs now use Kimi K2.5** (switched from Gemini Flash)
+- **Lessons learned:**
+  - Don't stack too many Kimi jobs at same time → rate limit cascade
+  - Diversify models: Gemini Flash for routine, Kimi for complex, Opus sparingly
+  - Stagger schedules by 5-10 min
+  - Keep Telegram output under 2000 chars
+  - High-value bounties need <2h scan intervals
+
+### Key Cron Jobs
+- Daily Briefing (6:15 AM)
+- Email Check (inbox reports)
+- AI News digest
+- Freelance bounty hunting (OpenWork)
+- Mission Control Keep-Alive
+- Browser Keep-Alive (managed browser)
+
+---
+
+## 🌐 BROWSER AUTOMATION
+
+### Managed Browser (Primary)
+- **Profile:** `openclaw`
+- **Port:** 18800
+- **Status:** Always connected, no extension needed
+- **Use for:** Automation, Cloudflare-blocked sites (Upwork, etc.)
+- **Keep-Alive:** Cron restarts if down
+
+### Chrome Extension (Secondary)
+- **Path:** `~/.openclaw/browser/chrome-extension`
+- **Use for:** Jason's logged-in sessions
+- **Requires:** Extension badge ON (Jason clicks toolbar icon)
+- **Note:** Hidden folder — ⌘+Shift+G to navigate in Finder
+
+---
+
+## 🧠 SHARED BRAIN ARCHITECTURE
+
+**Established:** 2026-02-11 (Inspired by @ericosiu)
+
+**Directory:** `shared-context/`
+- **priorities.md** — Current focus (single source of truth)
+- **agent-outputs/** — Cron/agent results
+- **feedback/** — Jason's approvals/rejections
+- **kpis/** — Live metrics
+- **content-calendar/** — Posting rules + content plans
+
+**All 23+ cron jobs:** Read priorities → write outputs → check feedback
+
+---
+
+## ⚠️ PENDING URGENT ITEMS
+
+### Payment Due
+- **Coinbase & Gemini card payments:** Due Feb 14, 2026 (Saturday) — 1 DAY AWAY
+
+### Calls to Make
+- Lourdes/Lisandra (8+ days cold)
+- Steve Coyle (978-985-9883)
+
+### Account Setup
+- Finish Zoho Mail (daneel@aimissioncontrol.us)
+- Recreate Upwork with new email
+- Create Kathryn Burton Wodify account (Feb 19-21)
+
+### Content
+- Tom's member spotlight photo
+- Valentine's Partner WOD filming
+
+---
+
+## 📚 KEY LESSONS & RULES
+
+1. **ClawHub-First:** Always search ClawHub before building custom
+2. **Email Rule:** Drafts to Jason, never direct to clients
+3. **X/Twitter:** Read-only, never post
+4. **Managed Browser:** Use `profile="openclaw"` for automation
+5. **Cron Models:** Kimi K2.5 for complex, Gemini Flash for routine
+6. **Token Limits:** Keep Telegram messages <2000 chars
+7. **Wallet:** Only ETH/Base exists — no Solana
+
+---
+
+## 🔗 IMPORTANT URLS
+
+- **Basescan:** https://basescan.org/address/0x7883d9b022929d6482863f77d5b5e9f9a0a1376d
+- **Upload-Post Dashboard:** https://app.upload-post.com
+- **CrossFit Blaze IG:** https://www.instagram.com/crossfitblaze
+- **OpenWork:** Freelance bounty platform
+- **Delx API:** https://api.delx.ai/v1/mcp
+
+---
+
+*This file is the curated essence. Daily logs are in memory/YYYY-MM-DD.md*

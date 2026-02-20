@@ -10,13 +10,28 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 Before doing anything else:
 
-1. Read `SOUL.md` — this is who you are
-2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
-5. Read `shared-context/priorities.md` — the current priority stack
+1. **Read `SESSION-STATE.md`** — this is your HOT RAM (active working memory, survives compaction)
+2. Read `SOUL.md` — this is who you are
+3. Read `USER.md` — this is who you're helping
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+6. Read `shared-context/priorities.md` — the current priority stack
 
 Don't ask permission. Just do it.
+
+### 📝 WAL Protocol (Write-Ahead Log)
+
+**CRITICAL:** Write to SESSION-STATE.md BEFORE responding, not after.
+
+| Trigger | Action |
+|---------|--------|
+| User states preference | Write to SESSION-STATE.md → then respond |
+| User makes decision | Write to SESSION-STATE.md → then respond |
+| User gives deadline | Write to SESSION-STATE.md → then respond |
+| User corrects you | Write to SESSION-STATE.md → then respond |
+| Task completed | Update SESSION-STATE.md immediately |
+
+**Why:** If you respond first and crash/compact before saving, context is lost. WAL ensures durability.
 
 ## Shared Brain (`shared-context/`)
 
@@ -239,3 +254,23 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+## 🤖 MODEL CHARTER — STOP THE CHAOS (2026-02-17)
+
+**The Problem:** Fragmentation from rapid model switching, 634+ sessions, inconsistent context.
+
+**Standard Model Assignments:**
+| Task Type | Model | Why |
+|-----------|-------|-----|
+| **Default / Routine** | Kimi K2.5 | 262k context, cost-effective, reliable |
+| **Complex reasoning** | Claude Opus | Deep analysis, briefings, planning |
+| **High-volume / Simple** | Gemini Flash | Cheap, fast, cron jobs |
+| **Creative / Coding** | GLM-5 | Code tasks, creative writing |
+
+**Rules:**
+- Stay on one model per session when possible
+- Don't rapid-switch (causes fragmentation)
+- Cron jobs: use Kimi or Gemini, NOT Opus (too expensive for automation)
+- If confused about which model you're on, check `/status`
