@@ -44,6 +44,12 @@
 - Only exception: Jason explicitly says "send this to the client"
 - Violated on 2026-02-11: sent 3 client emails directly → Jason was upset
 
+### ⚠️ CODING RULE (NEVER VIOLATE)
+- **ALL CODING TASKS must be done by Claude Code (via OpenRouter)**
+- I NEVER write code directly — always spawn Claude Code for:
+  - New features, bug fixes, refactoring, configuration changes
+- **Command:** `ANTHROPIC_API_KEY="$OPENROUTER_API_KEY" ANTHROPIC_BASE_URL="https://openrouter.ai/api" claude --model anthropic/claude-sonnet-4-5-20250514 --dangerously-skip-permissions`
+
 ### Email Aliases (Simplified References)
 - **"Your email"** = cosdaneelolivaw@gmail.com (**BANNED by Google** 2026-02-11)
 - **"My email"** = jason@crossfitblaze.com

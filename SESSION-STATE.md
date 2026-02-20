@@ -71,6 +71,7 @@ Mission Control v2 LIVE and functional — Jason testing. May switch models soon
 - Short commands, no filler responses
 - Email drafts go to Jason first, never direct to clients
 - X/Twitter: Read-only, NEVER post
+- **ALL CODING TASKS → Claude Code (via OpenRouter)** — I never write code directly, always spawn Claude Code
 
 ---
 *Last updated: 2026-02-20 10:06 EST*
