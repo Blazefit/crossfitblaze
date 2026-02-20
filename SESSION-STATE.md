@@ -13,17 +13,32 @@ Mission Control v2 LIVE and functional — Jason testing. May switch models soon
 - **Convex:** giant-porcupine-828 (US East, GitHub: Blazefit)
 - **Data seeded:** 8 tasks, 7 agents (+Daneel), 6 content items, 22 memories (old module migrated), 4 events, 7 activities, 2 users
 
-## Agent Hierarchy & Model Assignments (NEW)
+## Agent Hierarchy & Model Assignments (ACTIVE)
+
+### Cron Job Model Routing (31 jobs configured)
+
+| Category | Model | Jobs | Cost |
+|----------|-------|------|------|
+| **Coordination** | Opus 4.6 | Henry - Chief of Staff (8 AM, 8 PM) | $$$$ |
+| **Heavy Workers** | Kimi K2.5 | Daily Briefing, AI News, Night Owl, Closer, Spark, Ops, Builder, Strategist, Outreach, Freelance, Debuggers, TaskFlow | $$ |
+| **Heartbeat** | Gemini Flash | System checks, Email checks (30 min), Health checks, Update checks | $ |
+
+### Agent Roles
 | Agent | Role | Model | Purpose |
 |-------|------|-------|---------|
-| **Henry** | Chief of Staff / Coordinator | **Opus 4.6** | Orchestration, delegation, high-level decisions (least work, most complex) |
+| **Henry** | Chief of Staff / Coordinator | **Opus 4.6** | Orchestration, delegation, strategic decisions (light work, complex model) |
 | **Scout** | Research Analyst | **Kimi K2.5** | Heavy research, bounty scanning, lead generation |
 | **Quill** | Content Writer | **Kimi K2.5** | Writing, copy, captions, scripts |
 | **Pixel** | Thumbnail Designer | **Kimi K2.5** | Design work, graphics |
 | **Echo** | Social Media Manager | **Kimi K2.5** | Posting, engagement, scheduling |
 | **Codex** | Code Engineer | **Kimi K2.5** | Building tools, APIs, automations |
 | **Daneel** | AI Assistant | **Kimi K2.5** | Main interface, task execution |
-| **Haiku** | Heartbeat Monitor | **Gemini Flash / Haiku** | Lightweight status checks, polls (lowest cost) |
+| **Haiku** | Heartbeat Monitor | **Gemini Flash** | Status checks, polls (minimal cost) |
+
+### Cost Savings
+- ~70% reduction by using Kimi for bulk work vs Opus
+- Gemini Flash for heartbeats is ~90% cheaper than Kimi
+- Henry (Opus) only runs 2x daily for coordination, not heavy lifting
 - **Project dir:** ~/.openclaw/workspace/mission-control-v2
 
 ## Key Context
