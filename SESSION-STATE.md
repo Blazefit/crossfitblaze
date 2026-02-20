@@ -4,7 +4,27 @@ This file is the agent's "RAM" — survives compaction, restarts, distractions.
 Chat history is a BUFFER. This file is STORAGE.
 
 ## Current Task
-Mission Control v2 REBUILT FROM SCRATCH — live at https://alverta-huskier-right.ngrok-free.dev
+Mission Control v2 LIVE and functional — Jason testing. May switch models soon.
+
+## Mission Control Status
+- **URL:** https://alverta-huskier-right.ngrok-free.dev
+- **Server:** Next.js 16.1.6 on port 3000 (PID check: ps aux | grep next)
+- **Ngrok:** alverta-huskier-right.ngrok-free.dev → localhost:3000
+- **Convex:** giant-porcupine-828 (US East, GitHub: Blazefit)
+- **Data seeded:** 8 tasks, 7 agents (+Daneel), 6 content items, 22 memories (old module migrated), 4 events, 7 activities, 2 users
+
+## Agent Hierarchy & Model Assignments (NEW)
+| Agent | Role | Model | Purpose |
+|-------|------|-------|---------|
+| **Henry** | Chief of Staff / Coordinator | **Opus 4.6** | Orchestration, delegation, high-level decisions (least work, most complex) |
+| **Scout** | Research Analyst | **Kimi K2.5** | Heavy research, bounty scanning, lead generation |
+| **Quill** | Content Writer | **Kimi K2.5** | Writing, copy, captions, scripts |
+| **Pixel** | Thumbnail Designer | **Kimi K2.5** | Design work, graphics |
+| **Echo** | Social Media Manager | **Kimi K2.5** | Posting, engagement, scheduling |
+| **Codex** | Code Engineer | **Kimi K2.5** | Building tools, APIs, automations |
+| **Daneel** | AI Assistant | **Kimi K2.5** | Main interface, task execution |
+| **Haiku** | Heartbeat Monitor | **Gemini Flash / Haiku** | Lightweight status checks, polls (lowest cost) |
+- **Project dir:** ~/.openclaw/workspace/mission-control-v2
 
 ## Key Context
 - **Model:** Switched to Sonnet 4.5
