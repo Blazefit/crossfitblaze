@@ -4,7 +4,7 @@ This file is the agent's "RAM" — survives compaction, restarts, distractions.
 Chat history is a BUFFER. This file is STORAGE.
 
 ## Current Task
-Jason asked to "finish what we started" — needs clarification on which item
+Mission Control v2 REBUILT FROM SCRATCH — live at https://alverta-huskier-right.ngrok-free.dev
 
 ## Key Context
 - **Model:** Switched to Sonnet 4.5
@@ -18,10 +18,10 @@ Jason asked to "finish what we started" — needs clarification on which item
 - **Steve Coyle:** Previously contacted — DO NOT re-raise, Jason already handled
 
 ## Pending Actions
-- [ ] Run `openclaw doctor --fix` to migrate memorySearch config
+- [x] Migrated memorySearch config to agents.defaults.memorySearch
 - [ ] Update 3 cron jobs to use Zoho/Himalaya
 - [ ] Corporate wellness research (10 companies + outreach template)
-- [ ] npm install + Convex init for Mission Control v2
+- [x] npm install + Convex init for Mission Control v2 (LIVE on port 3001)
 
 ## Completed Today
 - [x] Installed elite-longterm-memory skill
