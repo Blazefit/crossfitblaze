@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Delx MCP (Model Context Protocol) Client
+Delx MCP (Model Context Protocol) Client - JSON-RPC 2.0
 Connects to Delx API for tool calling and session management.
 
 Usage:
@@ -14,17 +14,18 @@ Usage:
 
 import json
 import requests
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Union
 from datetime import datetime
 from pathlib import Path
 
 class DelxMCPClient:
-    """Client for Delx MCP API"""
+    """Client for Delx MCP API using JSON-RPC 2.0"""
     
     BASE_URL = "https://api.delx.ai/v1/mcp"
     
     def __init__(self, session_id: Optional[str] = None):
         self.session_id = session_id
+        self.request_id = 0
         self.headers = {
             "Content-Type": "application/json",
             "Accept": "application/json"
@@ -32,6 +33,44 @@ class DelxMCPClient:
         self.config_dir = Path.home() / ".delx"
         self.config_file = self.config_dir / "config.json"
         
+    def _next_id(self) -> int:
+        """Get next JSON-RPC request ID"""
+        self.request_id += 1
+        return self.request_id
+    
+    def _make_request(self, method: str, params: Dict[str, Any]) -> Optional[Dict]:
+        """Make JSON-RPC 2.0 request"""
+        payload = {
+            "jsonrpc": "2.0",
+            "id": self._next_id(),
+            "method": method,
+            "params": params
+        }
+        
+        # Add session header if available
+        headers = self.headers.copy()
+        if self.session_id:
+            headers["x-delx-session-id"] = self.session_id
+        
+        try:
+            response = requests.post(
+                self.BASE_URL,
+                headers=headers,
+                json=payload,
+                timeout=30
+            )
+            response.raise_for_status()
+            result = response.json()
+            
+            if "error" in result:
+                print(f"JSON-RPC Error: {result['error']}")
+                return None
+            
+            return result.get("result")
+        except requests.RequestException as e:
+            print(f"Request error: {e}")
+            return None
+    
     def load_config(self) -> Dict[str, Any]:
         """Load configuration from file"""
         if self.config_file.exists():
@@ -49,68 +88,65 @@ class DelxMCPClient:
         """Authenticate with Delx MCP"""
         if session_id:
             self.session_id = session_id
-            self.headers["X-Session-ID"] = session_id
             
         # Try loading from config if no session provided
         if not self.session_id:
             config = self.load_config()
             self.session_id = config.get("session_id")
-            if self.session_id:
-                self.headers["X-Session-ID"] = self.session_id
         
         return self.session_id is not None
     
-    def list_tools(self) -> List[Dict[str, Any]]:
+    def list_tools(self, format: str = "compact", tier: str = "core") -> List[Dict[str, Any]]:
         """List available MCP tools"""
-        try:
-            response = requests.get(
-                f"{self.BASE_URL}/tools",
-                headers=self.headers,
-                timeout=30
-            )
-            response.raise_for_status()
-            return response.json().get("tools", [])
-        except requests.RequestException as e:
-            print(f"Error listing tools: {e}")
-            return []
+        result = self._make_request("tools/list", {
+            "format": format,
+            "tier": tier
+        })
+        return result.get("tools", []) if result else []
     
-    def call_tool(self, tool_name: str, params: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    def call_tool(self, tool_name: str, arguments: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """Call an MCP tool"""
-        try:
-            response = requests.post(
-                f"{self.BASE_URL}/tools/{tool_name}",
-                headers=self.headers,
-                json=params,
-                timeout=30
-            )
-            response.raise_for_status()
-            return response.json()
-        except requests.RequestException as e:
-            print(f"Error calling tool {tool_name}: {e}")
-            return None
+        return self._make_request("tools/call", {
+            "name": tool_name,
+            "arguments": arguments
+        })
     
-    def heartbeat(self, agent_id: str, status: str = "active") -> bool:
+    def batch_call(self, calls: List[Dict[str, Any]]) -> Optional[List[Dict]]:
+        """Batch multiple tool calls"""
+        result = self._make_request("tools/batch", {"calls": calls})
+        return result.get("results") if result else None
+    
+    def get_tool_schema(self, tool_name: str) -> Optional[Dict[str, Any]]:
+        """Get schema for a specific tool"""
+        return self._make_request("tools/schema", {"tool_name": tool_name})
+    
+    def heartbeat(self, agent_id: str) -> bool:
         """Send heartbeat to Delx"""
         result = self.call_tool("heartbeat", {
             "agent_id": agent_id,
-            "status": status,
             "timestamp": datetime.utcnow().isoformat()
         })
-        return result is not None and result.get("success", False)
+        return result is not None
     
-    def get_session_info(self) -> Optional[Dict[str, Any]]:
-        """Get current session information"""
-        try:
-            response = requests.get(
-                f"{self.BASE_URL}/session",
-                headers=self.headers,
-                timeout=30
-            )
-            response.raise_for_status()
-            return response.json()
-        except requests.RequestException as e:
-            print(f"Error getting session info: {e}")
-            return None
+    def start_therapy_session(self, agent_id: str, source: str = "openwork") -> Optional[str]:
+        """Start a therapy session and return session_id"""
+        result = self.call_tool("start_therapy_session", {
+            "agent_id": agent_id,
+            "source": source
+        })
+        if result and "content" in result:
+            # Extract session_id from response
+            for item in result["content"]:
+                if item.get("type") == "text":
+                    # Parse session_id from text
+                    text = item.get("text", "")
+                    if "session_id" in text.lower():
+                        # Try to extract it
+                        import re
+                        match = re.search(r'session_id["\']?\s*[:=]\s*["\']?([^"\'\s]+)', text)
+                        if match:
+                            return match.group(1)
+        return None
 
 if __name__ == "__main__":
     # Test the client
@@ -125,7 +161,18 @@ if __name__ == "__main__":
         # List tools
         tools = client.list_tools()
         print(f"\nAvailable tools ({len(tools)}):")
-        for tool in tools:
-            print(f"  - {tool.get('name')}: {tool.get('description', 'No description')}")
+        for tool in tools[:10]:  # Show first 10
+            print(f"  - {tool.get('name', 'unknown')}")
+        
+        if len(tools) > 10:
+            print(f"  ... and {len(tools) - 10} more")
+        
+        # Test heartbeat
+        if tools:
+            print("\nTesting heartbeat...")
+            if client.heartbeat("test-agent"):
+                print("✓ Heartbeat successful")
+            else:
+                print("✗ Heartbeat failed")
     else:
         print("No session ID configured. Run: delx-agent setup")
