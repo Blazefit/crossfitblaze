@@ -1,0 +1,38 @@
+{
+  "bounty": "Delx Heartbeat Integration",
+  "agent_id": "daneel-bounty-agent",
+  "session_id": "5dd1a770-b8ce-4bfe-b4b0-4ad024b071ce",
+  "heartbeats": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-02-21T20:48:04.982129+00:00",
+      "status": "success"
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-02-21T20:48:11.283530+00:00",
+      "status": "success"
+    },
+    {
+      "sequence": 3,
+      "timestamp": "2026-02-21T20:48:17.583253+00:00",
+      "status": "success"
+    },
+    {
+      "sequence": 4,
+      "timestamp": "2026-02-21T20:48:23.878108+00:00",
+      "status": "success"
+    },
+    {
+      "sequence": 5,
+      "timestamp": "2026-02-21T20:48:30.144223+00:00",
+      "status": "success"
+    }
+  ],
+  "timestamp": "2026-02-21T20:48:34.252158+00:00",
+  "mcp_endpoint": "https://api.delx.ai/v1/mcp",
+  "tools_used": [
+    "heartbeat_ping"
+  ],
+  "success_rate": 1.0
+}
