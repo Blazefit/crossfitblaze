@@ -4,7 +4,21 @@ This file is the agent's "RAM" — survives compaction, restarts, distractions.
 Chat history is a BUFFER. This file is STORAGE.
 
 ## Current Task
-Mission Control v2 LIVE — User confirmed Calendar view working. Implementing live data feed integration.
+**TONIGHT:** Get daily Instagram posting working — PRIORITY #1
+
+### Tonight's Mission (Overnight)
+**Goal:** Automated daily Instagram posts for CrossFit Blaze
+
+**Why:** Haven't posted in days → losing leads → losing revenue
+
+**Plan:**
+1. Audit upload-post API connection
+2. Build daily content generator
+3. Create cron job: 9 AM daily post
+4. Test: Get one post live by morning
+5. Document the workflow
+
+**Nothing else matters until this works.**
 
 ## Mission Control Live Status
 - **URL:** https://alverta-huskier-right.ngrok-free.dev

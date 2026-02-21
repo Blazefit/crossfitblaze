@@ -25,7 +25,10 @@ const navigation = [
   { name: "Memory", href: "/memory", icon: Brain },
   { name: "Team", href: "/team", icon: Users },
   { name: "Office", href: "/office", icon: Building2 },
-  { name: "Peptides", href: "/peptide-inventory.html", icon: FlaskConical },
+];
+
+const externalLinks = [
+  { name: "Peptide Inventory", href: "/peptide-inventory.html", icon: FlaskConical },
 ];
 
 export function Sidebar() {
@@ -77,6 +80,24 @@ export function Sidebar() {
                 </Link>
               );
             })}
+            
+            {/* External Links */}
+            <div className="pt-4 mt-4 border-t border-[#1e1e1e]">
+              <p className="px-4 text-xs text-gray-500 uppercase mb-2">External</p>
+              {externalLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-gray-400 hover:bg-[#141414] hover:text-white"
+                >
+                  <item.icon size={20} />
+                  <span className="font-medium">{item.name}</span>
+                </a>
+              ))}
+            </div>
           </nav>
 
           {/* Footer */}
