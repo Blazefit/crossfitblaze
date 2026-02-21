@@ -1,28 +1,27 @@
-#!/usr/bin/env python3
+#!/Users/daneel/.openclaw/workspace/skills/wodify-browser-automation/venv/bin/python3
 """
-Wodify Browser Automation - Manage gym members via browser automation
-No API required - uses Playwright to automate the Wodify admin interface.
+Wodify Browser Automation - Member Edition
+Works with member-level Wodify access (not admin).
 
 Usage:
-    python3 wodify.py add-client "Name" "Email" "Phone"
-    python3 wodify.py list-clients
-    python3 wodify.py search "Name"
-    python3 wodify.py hold-client "Name" "Reason"
-    python3 wodify.py remove-client "Name"
+    python3 wodify.py checkin "5:30 PM WOD"
+    python3 wodify.py log-workout "Fran" "4:32"
+    python3 wodify.py view-schedule
+    python3 wodify.py view-history
 """
 
 import argparse
 import json
 import os
 import sys
-import time
 from pathlib import Path
 from datetime import datetime
 
 try:
     from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 except ImportError:
-    print("Error: playwright not installed. Run: pip install playwright && playwright install chromium")
+    print("Error: playwright not installed.")
+    print("Run: cd ~/.openclaw/workspace/skills/wodify-browser-automation && source venv/bin/activate && pip install playwright && playwright install chromium")
     sys.exit(1)
 
 # Configuration
@@ -30,8 +29,8 @@ CONFIG_DIR = Path.home() / ".wodify"
 CONFIG_FILE = CONFIG_DIR / "credentials.json"
 COOKIES_FILE = CONFIG_DIR / "cookies.json"
 LOG_FILE = CONFIG_DIR / "activity.log"
-WODIFY_LOGIN_URL = "https://app.wodify.com/Security/Login"
-WODIFY_ADMIN_URL = "https://app.wodify.com/Admin"
+WODIFY_LOGIN_URL = "https://app.wodify.com/SignIn/"
+WODIFY_BASE_URL = "https://app.wodify.com"
 
 def log(action: str, details: str = ""):
     """Log activity to file"""
@@ -44,7 +43,7 @@ def load_credentials():
     """Load credentials from config file"""
     if not CONFIG_FILE.exists():
         print(f"Error: Config file not found at {CONFIG_FILE}")
-        print(f"Create it from config.template.json")
+        print("Create it with: echo '{\"email\":\"your@email.com\",\"password\":\"yourpass\"}' > ~/.wodify/credentials.json")
         sys.exit(1)
     
     with open(CONFIG_FILE) as f:
@@ -66,44 +65,12 @@ def load_cookies(context):
             return True
     return False
 
-def login(page, creds):
-    """Login to Wodify"""
-    print("Logging into Wodify...")
-    
-    page.goto(WODIFY_LOGIN_URL)
-    page.wait_for_load_state("networkidle")
-    
-    # Check if already logged in
-    if "Admin" in page.url or "Dashboard" in page.url:
-        print("Already logged in (session restored)")
-        return True
-    
-    # Fill login form
-    try:
-        page.fill('input[name="Username"], input[type="email"], #Username', creds["email"])
-        page.fill('input[name="Password"], input[type="password"], #Password', creds["password"])
-        page.click('button[type="submit"], input[type="submit"], .login-button')
-        
-        # Wait for login to complete
-        page.wait_for_url("**/Admin**", timeout=15000)
-        print("Login successful")
-        return True
-    except PlaywrightTimeout:
-        print("Login failed - check credentials")
-        return False
-    except Exception as e:
-        print(f"Login error: {e}")
-        return False
-
 def create_browser(headless=True):
     """Create browser instance"""
     p = sync_playwright().start()
     browser = p.chromium.launch(headless=headless)
     context = browser.new_context()
-    
-    # Try to load existing cookies
     has_session = load_cookies(context)
-    
     page = context.new_page()
     return p, browser, context, page, has_session
 
@@ -113,194 +80,162 @@ def close_browser(p, browser, context):
     browser.close()
     p.stop()
 
-def add_client(page, name: str, email: str, phone: str):
-    """Add a new client"""
-    print(f"Adding client: {name}")
-    log("ADD_CLIENT", f"{name} | {email} | {phone}")
+def login(page, creds):
+    """Login to Wodify - Two step process"""
+    print("Logging into Wodify...")
     
-    # Navigate to clients/members section
-    page.goto(f"{WODIFY_ADMIN_URL}/Clients")
-    page.wait_for_load_state("networkidle")
+    page.goto(WODIFY_LOGIN_URL)
+    page.wait_for_timeout(2000)  # Wait for page to settle
+    
+    # Check if already logged in
+    if any(x in page.url for x in ["Home", "Dashboard", "WOD", "Admin", "Main"]):
+        print("Already logged in (session restored)")
+        return True
     
     try:
-        # Click Add New Client button
-        page.click('button:has-text("Add"), a:has-text("Add Client"), .add-client-btn')
+        # Step 1: Enter email
+        print("  Step 1: Email...")
+        page.fill('input[placeholder*="Email"], input[type="email"]', creds["email"])
+        page.click('button:has-text("CONTINUE")')
         page.wait_for_load_state("networkidle")
         
-        # Fill in client details
-        page.fill('input[name="FirstName"], #FirstName', name.split()[0])
-        if len(name.split()) > 1:
-            page.fill('input[name="LastName"], #LastName', ' '.join(name.split()[1:]))
-        page.fill('input[name="Email"], #Email', email)
-        page.fill('input[name="Phone"], #Phone', phone)
+        # Step 2: Enter password
+        print("  Step 2: Password...")
+        page.wait_for_selector('input[type="password"]', timeout=10000)
+        page.fill('input[type="password"]', creds["password"])
+        page.click('button:has-text("Sign In"), button[type="submit"]')
         
-        # Save
-        page.click('button:has-text("Save"), button:has-text("Add"), input[type="submit"]')
-        page.wait_for_load_state("networkidle")
-        
-        print(f"✓ Client '{name}' added successfully")
+        # Wait for successful login (any destination except login page)
+        page.wait_for_timeout(3000)  # Give page time to settle
+        if "SignIn" in page.url:
+            print("✗ Still on login page")
+            return False
+        print("✓ Login successful")
         return True
     except Exception as e:
-        print(f"✗ Failed to add client: {e}")
+        print(f"✗ Login failed: {e}")
         return False
 
-def list_clients(page):
-    """List all active clients"""
-    print("Listing clients...")
-    log("LIST_CLIENTS")
+def checkin_wod(page, wod_name: str):
+    """Check into a WOD/class"""
+    print(f"Checking into: {wod_name}")
+    log("CHECKIN", wod_name)
     
-    page.goto(f"{WODIFY_ADMIN_URL}/Clients")
-    page.wait_for_load_state("networkidle")
-    
-    clients = []
     try:
-        # Get client rows from table
-        rows = page.query_selector_all('table tbody tr, .client-list .client-item')
+        # Navigate to schedule/reserve page
+        page.goto(f"{WODIFY_BASE_URL}/Schedule")
+        page.wait_for_load_state("networkidle")
         
-        for row in rows:
+        # Look for the WOD and click Reserve
+        # This is simplified - actual selectors depend on Wodify's UI
+        page.click(f'text="{wod_name}"')
+        page.click('button:has-text("Reserve"), button:has-text("Sign In")')
+        
+        print(f"✓ Checked into {wod_name}")
+        return True
+    except Exception as e:
+        print(f"✗ Check-in failed: {e}")
+        return False
+
+def log_workout(page, workout_name: str, result: str):
+    """Log a workout result"""
+    print(f"Logging workout: {workout_name} = {result}")
+    log("LOG_WORKOUT", f"{workout_name}: {result}")
+    
+    try:
+        # Navigate to workout tracking
+        page.goto(f"{WODIFY_BASE_URL}/Tracking")
+        page.wait_for_load_state("networkidle")
+        
+        # Find workout and log result
+        page.fill('input[placeholder*="Search"]', workout_name)
+        page.press('input[placeholder*="Search"]', 'Enter')
+        page.click(f'text="{workout_name}"')
+        page.fill('input[name="result"], input[placeholder*="Result"]', result)
+        page.click('button:has-text("Save")')
+        
+        print(f"✓ Logged {workout_name}: {result}")
+        return True
+    except Exception as e:
+        print(f"✗ Log failed: {e}")
+        return False
+
+def view_schedule(page):
+    """View gym schedule"""
+    print("Loading gym schedule...")
+    log("VIEW_SCHEDULE")
+    
+    try:
+        page.goto(f"{WODIFY_BASE_URL}/Schedule")
+        page.wait_for_load_state("networkidle")
+        
+        # Extract schedule info
+        classes = page.query_selector_all('.class-item, .wod-item, [data-class]')
+        print(f"\nFound {len(classes)} classes:\n")
+        
+        for cls in classes[:10]:  # Show first 10
             try:
-                name = row.query_selector('td:nth-child(1), .client-name').inner_text()
-                email = row.query_selector('td:nth-child(2), .client-email').inner_text()
-                status = row.query_selector('td:nth-child(3), .client-status').inner_text()
-                clients.append({"name": name.strip(), "email": email.strip(), "status": status.strip()})
+                name = cls.query_selector('.class-name, .wod-name').inner_text()
+                time = cls.query_selector('.class-time, .time').inner_text()
+                print(f"  {time} - {name}")
             except:
                 continue
         
-        print(f"\nFound {len(clients)} clients:\n")
-        for c in clients:
-            print(f"  • {c['name']} | {c['email']} | {c['status']}")
-        
-        return clients
+        return True
     except Exception as e:
-        print(f"Error listing clients: {e}")
-        return []
+        print(f"Error: {e}")
+        return False
 
-def search_client(page, query: str):
-    """Search for a client"""
-    print(f"Searching for: {query}")
-    log("SEARCH_CLIENT", query)
-    
-    page.goto(f"{WODIFY_ADMIN_URL}/Clients")
-    page.wait_for_load_state("networkidle")
+def view_history(page):
+    """View personal workout history"""
+    print("Loading workout history...")
+    log("VIEW_HISTORY")
     
     try:
-        # Use search box
-        page.fill('input[type="search"], input[name="search"], .search-input', query)
-        page.press('input[type="search"], input[name="search"], .search-input', 'Enter')
+        page.goto(f"{WODIFY_BASE_URL}/Performance")
         page.wait_for_load_state("networkidle")
         
-        # Get results
-        rows = page.query_selector_all('table tbody tr, .client-list .client-item')
-        results = []
+        # Extract history
+        workouts = page.query_selector_all('.workout-item, .history-item')
+        print(f"\nRecent workouts ({len(workouts)}):\n")
         
-        for row in rows:
+        for wod in workouts[:10]:
             try:
-                name = row.query_selector('td:nth-child(1), .client-name').inner_text()
-                if query.lower() in name.lower():
-                    email = row.query_selector('td:nth-child(2), .client-email').inner_text()
-                    results.append({"name": name.strip(), "email": email.strip()})
+                name = wod.query_selector('.workout-name').inner_text()
+                date = wod.query_selector('.workout-date, .date').inner_text()
+                result = wod.query_selector('.result, .score').inner_text()
+                print(f"  {date}: {name} = {result}")
             except:
                 continue
         
-        print(f"\nFound {len(results)} matching clients:\n")
-        for r in results:
-            print(f"  • {r['name']} | {r['email']}")
-        
-        return results
-    except Exception as e:
-        print(f"Search error: {e}")
-        return []
-
-def hold_client(page, name: str, reason: str):
-    """Put a client on hold"""
-    print(f"Putting '{name}' on hold: {reason}")
-    log("HOLD_CLIENT", f"{name} | {reason}")
-    
-    # Search for client first
-    results = search_client(page, name)
-    
-    if not results:
-        print(f"✗ Client '{name}' not found")
-        return False
-    
-    try:
-        # Click on client to open details
-        page.click(f'text="{name}"')
-        page.wait_for_load_state("networkidle")
-        
-        # Find and click Hold button
-        page.click('button:has-text("Hold"), a:has-text("Put on Hold")')
-        
-        # Enter reason
-        page.fill('textarea[name="Reason"], input[name="Reason"], #HoldReason', reason)
-        
-        # Confirm
-        page.click('button:has-text("Confirm"), button:has-text("Save")')
-        page.wait_for_load_state("networkidle")
-        
-        print(f"✓ Client '{name}' placed on hold")
         return True
     except Exception as e:
-        print(f"✗ Failed to hold client: {e}")
-        return False
-
-def remove_client(page, name: str):
-    """Remove/cancel a client"""
-    print(f"Removing client: {name}")
-    log("REMOVE_CLIENT", name)
-    
-    # Search for client first
-    results = search_client(page, name)
-    
-    if not results:
-        print(f"✗ Client '{name}' not found")
-        return False
-    
-    try:
-        # Click on client to open details
-        page.click(f'text="{name}"')
-        page.wait_for_load_state("networkidle")
-        
-        # Find and click Delete/Cancel button
-        page.click('button:has-text("Delete"), button:has-text("Cancel"), a:has-text("Remove")')
-        
-        # Confirm deletion
-        page.click('button:has-text("Confirm"), button:has-text("Yes")')
-        page.wait_for_load_state("networkidle")
-        
-        print(f"✓ Client '{name}' removed")
-        return True
-    except Exception as e:
-        print(f"✗ Failed to remove client: {e}")
+        print(f"Error: {e}")
         return False
 
 def main():
-    parser = argparse.ArgumentParser(description="Wodify Browser Automation")
+    parser = argparse.ArgumentParser(description="Wodify Member Automation")
     parser.add_argument("--show", action="store_true", help="Show browser window")
     
     subparsers = parser.add_subparsers(dest="command", help="Commands")
     
-    # Add client
-    add_parser = subparsers.add_parser("add-client", help="Add a new client")
-    add_parser.add_argument("name", help="Client name")
-    add_parser.add_argument("email", help="Client email")
-    add_parser.add_argument("phone", help="Client phone")
+    # Checkin
+    checkin_parser = subparsers.add_parser("checkin", help="Check into a WOD")
+    checkin_parser.add_argument("wod_name", help="WOD/class name")
     
-    # List clients
-    subparsers.add_parser("list-clients", help="List all active clients")
+    # Log workout
+    log_parser = subparsers.add_parser("log-workout", help="Log workout result")
+    log_parser.add_argument("workout_name", help="Workout name")
+    log_parser.add_argument("result", help="Your result/time/score")
     
-    # Search
-    search_parser = subparsers.add_parser("search", help="Search for a client")
-    search_parser.add_argument("query", help="Search query")
+    # View schedule
+    subparsers.add_parser("view-schedule", help="View gym schedule")
     
-    # Hold client
-    hold_parser = subparsers.add_parser("hold-client", help="Put a client on hold")
-    hold_parser.add_argument("name", help="Client name")
-    hold_parser.add_argument("reason", help="Reason for hold")
+    # View history
+    subparsers.add_parser("view-history", help="View workout history")
     
-    # Remove client
-    remove_parser = subparsers.add_parser("remove-client", help="Remove a client")
-    remove_parser.add_argument("name", help="Client name")
+    # Test login
+    subparsers.add_parser("test-login", help="Test login only")
     
     args = parser.parse_args()
     
@@ -315,28 +250,21 @@ def main():
     p, browser, context, page, has_session = create_browser(headless=not args.show)
     
     try:
-        # Login if needed
-        if not has_session:
-            if not login(page, creds):
-                sys.exit(1)
-        else:
-            # Verify session is still valid
-            page.goto(WODIFY_ADMIN_URL)
-            if "Login" in page.url:
-                if not login(page, creds):
-                    sys.exit(1)
+        # Login
+        if not login(page, creds):
+            sys.exit(1)
         
         # Execute command
-        if args.command == "add-client":
-            add_client(page, args.name, args.email, args.phone)
-        elif args.command == "list-clients":
-            list_clients(page)
-        elif args.command == "search":
-            search_client(page, args.query)
-        elif args.command == "hold-client":
-            hold_client(page, args.name, args.reason)
-        elif args.command == "remove-client":
-            remove_client(page, args.name)
+        if args.command == "test-login":
+            print("\n✓ Login test passed")
+        elif args.command == "checkin":
+            checkin_wod(page, args.wod_name)
+        elif args.command == "log-workout":
+            log_workout(page, args.workout_name, args.result)
+        elif args.command == "view-schedule":
+            view_schedule(page)
+        elif args.command == "view-history":
+            view_history(page)
         
     finally:
         close_browser(p, browser, context)
