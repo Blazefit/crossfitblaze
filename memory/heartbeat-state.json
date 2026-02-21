@@ -1,0 +1,26 @@
+{
+  "lastChecks": {
+    "email": 1740115200,
+    "calendar": 1740115200,
+    "cronHealth": 1740115200,
+    "apiQuotas": 1740115200,
+    "nightOwl": 1740115200
+  },
+  "issuesTracked": [
+    {
+      "id": "himalaya-zoho-config",
+      "name": "Himalaya CLI Zoho Configuration",
+      "status": "open",
+      "daysOpen": 0,
+      "affects": ["night-owl-inbox-check"],
+      "note": "Himalaya not configured for Zoho IMAP. Inbox monitoring offline."
+    },
+    {
+      "id": "wodify-api",
+      "name": "Wodify API Access",
+      "status": "open", 
+      "daysOpen": 14,
+      "affects": ["task-006"]
+    }
+  ]
+}
