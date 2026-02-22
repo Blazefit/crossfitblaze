@@ -1,31 +1,100 @@
 #!/Users/daneel/.openclaw/workspace/skills/wodify-browser-automation/venv/bin/python3
 """
-Simple Wodify Member Add
+Simple Wodify Member Add - WITH ACTUAL PRICES
 Usage: python3 add-member.py "Name" "Email" "membership-type"
 
-Examples:
-    python3 add-member.py "John Smith" "john@email.com" "premium"
-    python3 add-member.py "Jane Doe" "jane@email.com" "basic"
-    python3 add-member.py "Bob Wilson" "bob@email.com" "dropin"
+Extracted from Wodify on 2026-02-22
 """
 
 import sys
 import json
 from pathlib import Path
+from datetime import datetime
 
-# Membership types with pricing
+# ACTUAL CrossFit Blaze Membership Prices (from Wodify Admin)
 MEMBERSHIPS = {
-    "premium": {"name": "Premium Unlimited", "price": 199, "term": "month"},
-    "unlimited": {"name": "Unlimited", "price": 179, "term": "month"},
-    "basic": {"name": "Basic (3x/week)", "price": 139, "term": "month"},
-    "couple": {"name": "Couple Unlimited", "price": 299, "term": "month"},
-    "student": {"name": "Student", "price": 119, "term": "month"},
-    "dropin": {"name": "Drop-In", "price": 25, "term": "visit"},
-    "10pack": {"name": "10-Class Pack", "price": 199, "term": "10 classes"},
+    # Main Memberships
+    "premium": {
+        "name": "CrossFit Blaze Premium", 
+        "price": 155,  # $135-$155 range, using high end
+        "term": "month",
+        "attendance": "Unlimited",
+        "wodify_id": "10510"
+    },
+    "basic": {
+        "name": "Blaze Basic", 
+        "price": 0,  # Shows $0.00 in Wodify - needs manual price entry
+        "term": "month",
+        "attendance": "8 Classes",
+        "note": "Price needs to be set manually in Wodify",
+        "wodify_id": "19868"
+    },
+    "dropin": {
+        "name": "Drop-In", 
+        "price": 20,  # $20-$60 range
+        "term": "visit",
+        "attendance": "1 Class",
+        "wodify_id": "14856"
+    },
+    
+    # Class Packs
+    "10pack": {
+        "name": "Blaze Punchcard (10 sessions)", 
+        "price": 165,
+        "term": "10 classes",
+        "attendance": "10 Classes",
+        "wodify_id": "10511"
+    },
+    "private10": {
+        "name": "10 Private 30min Sessions", 
+        "price": 350,
+        "term": "10 sessions",
+        "attendance": "10 Classes",
+        "wodify_id": "11222"
+    },
+    
+    # Specialty Programs
+    "kids": {
+        "name": "Blaze Fit Kids", 
+        "price": 89,
+        "term": "month",
+        "attendance": "Unlimited",
+        "wodify_id": "10513"
+    },
+    "bootcamp": {
+        "name": "Blaze Bootcamp", 
+        "price": 130,  # $35-$130 range
+        "term": "month",
+        "attendance": "Unlimited",
+        "wodify_id": "57168"
+    },
+    "barbell": {
+        "name": "Barbell Club", 
+        "price": 100,
+        "term": "month",
+        "attendance": "Unlimited",
+        "wodify_id": "67338"
+    },
+    "athome": {
+        "name": "Blaze at Home", 
+        "price": 40,
+        "term": "month",
+        "attendance": "Unlimited",
+        "wodify_id": "57170"
+    },
+    
+    # Trials
+    "trial": {
+        "name": "Free Trial", 
+        "price": 0,
+        "term": "trial",
+        "attendance": "3 Classes",
+        "wodify_id": "15058"
+    }
 }
 
 def add_member_simple(name: str, email: str, membership_type: str = "premium"):
-    """Add a member with simple parameters"""
+    """Add a member with actual Wodify prices"""
     
     # Normalize membership type
     membership_key = membership_type.lower().strip()
@@ -36,14 +105,17 @@ def add_member_simple(name: str, email: str, membership_type: str = "premium"):
     
     membership = MEMBERSHIPS[membership_key]
     
-    print(f"\nAdding member:")
+    print(f"\nAdding member to Wodify:")
     print(f"  Name: {name}")
     print(f"  Email: {email}")
     print(f"  Membership: {membership['name']}")
-    print(f"  Price: ${membership['price']}/{membership['term']}")
+    if membership['price'] > 0:
+        print(f"  Price: ${membership['price']}/{membership['term']}")
+    else:
+        print(f"  Price: TBD (needs manual setup)")
     print()
     
-    # Generate a phone number placeholder (user can update later)
+    # Generate a phone number placeholder
     phone = "239-555-0000"
     
     # Call the main wodify script
@@ -69,20 +141,29 @@ def add_member_simple(name: str, email: str, membership_type: str = "premium"):
             entries = json.load(f)
     
     entries.append({
+        "timestamp": datetime.now().isoformat(),
         "name": name,
         "email": email,
         "membership": membership['name'],
         "price": membership['price'],
         "term": membership['term'],
-        "status": "pending_wodify_setup"  # Jason needs to complete in Wodify
+        "attendance": membership['attendance'],
+        "wodify_id": membership.get('wodify_id'),
+        "status": "added_to_wodify",
+        "note": "Set membership plan in Wodify admin manually"
     })
     
     with open(member_log, "w") as f:
         json.dump(entries, f, indent=2)
     
     print(f"\n✓ Member added to Wodify")
-    print(f"✓ Membership logged: {membership['name']} at ${membership['price']}/{membership['term']}")
-    print(f"⚠️  NOTE: You'll need to set the membership plan in Wodify admin manually")
+    print(f"✓ Membership logged: {membership['name']}")
+    print(f"⚠️  IMPORTANT: You must manually set the membership plan in Wodify:")
+    print(f"   1. Go to People → Clients")
+    print(f"   2. Find the client: {name}")
+    print(f"   3. Edit → Memberships → Add Membership")
+    print(f"   4. Select: {membership['name']}")
+    print(f"   5. Set price: ${membership['price']}")
     
     return True
 
@@ -92,11 +173,23 @@ def main():
         print()
         print("Examples:")
         print('  python3 add-member.py "John Smith" "john@email.com" premium')
-        print('  python3 add-member.py "Jane Doe" "jane@email.com" basic')
+        print('  python3 add-member.py "Jane Doe" "jane@email.com" dropin')
         print()
-        print("Membership types:")
-        for key, info in MEMBERSHIPS.items():
-            print(f"  {key:10} = {info['name']} (${info['price']}/{info['term']})")
+        print("Membership types (from Wodify):")
+        print("  Main Memberships:")
+        for key in ['premium', 'basic', 'dropin']:
+            info = MEMBERSHIPS[key]
+            print(f"    {key:12} = {info['name']} (${info['price']}/{info['term']})")
+        print("\n  Class Packs:")
+        for key in ['10pack', 'private10']:
+            info = MEMBERSHIPS[key]
+            print(f"    {key:12} = {info['name']} (${info['price']}/{info['term']})")
+        print("\n  Specialty:")
+        for key in ['kids', 'bootcamp', 'barbell', 'athome']:
+            info = MEMBERSHIPS[key]
+            print(f"    {key:12} = {info['name']} (${info['price']}/{info['term']})")
+        print("\n  Trial:")
+        print(f"    {'trial':12} = {MEMBERSHIPS['trial']['name']} (Free)")
         sys.exit(1)
     
     name = sys.argv[1]

@@ -1,0 +1,97 @@
+{
+  "gym": "CrossFit Blaze",
+  "extracted_date": "2026-02-22",
+  "source": "Wodify Admin - Class Memberships",
+  "memberships": {
+    "premium": {
+      "name": "CrossFit Blaze Premium",
+      "price_range": "$135.00 - $155.00",
+      "price_used": 155,
+      "term": "month",
+      "attendance": "Unlimited",
+      "type": "Class Plan",
+      "wodify_id": "10510"
+    },
+    "basic": {
+      "name": "Blaze Basic",
+      "price": "TBD (shows $0.00 in Wodify)",
+      "term": "month",
+      "attendance": "8 Classes",
+      "type": "Class Pack",
+      "wodify_id": "19868",
+      "note": "Price needs to be set manually"
+    },
+    "dropin": {
+      "name": "Drop-In",
+      "price_range": "$20.00 - $60.00",
+      "price_used": 20,
+      "term": "visit",
+      "attendance": "1 Class",
+      "type": "Class Pack",
+      "wodify_id": "14856"
+    },
+    "10pack": {
+      "name": "Blaze Punchcard (10 sessions)",
+      "price": 165,
+      "term": "10 classes",
+      "attendance": "10 Classes",
+      "type": "Class Pack",
+      "wodify_id": "10511"
+    },
+    "private10": {
+      "name": "10 Private 30min Sessions",
+      "price": 350,
+      "term": "10 sessions",
+      "attendance": "10 Classes",
+      "type": "Class Pack",
+      "wodify_id": "11222"
+    },
+    "kids": {
+      "name": "Blaze Fit Kids",
+      "price": 89,
+      "term": "month",
+      "attendance": "Unlimited",
+      "type": "Class Plan",
+      "wodify_id": "10513"
+    },
+    "bootcamp": {
+      "name": "Blaze Bootcamp",
+      "price_range": "$35.00 - $130.00",
+      "price_used": 130,
+      "term": "month",
+      "attendance": "Unlimited",
+      "type": "Class Plan",
+      "wodify_id": "57168"
+    },
+    "barbell": {
+      "name": "Barbell Club",
+      "price": 100,
+      "term": "month",
+      "attendance": "Unlimited",
+      "type": "Class Plan",
+      "wodify_id": "67338"
+    },
+    "athome": {
+      "name": "Blaze at Home",
+      "price": 40,
+      "term": "month",
+      "attendance": "Unlimited",
+      "type": "Class Plan",
+      "wodify_id": "57170"
+    },
+    "trial": {
+      "name": "Free Trial",
+      "price": 0,
+      "term": "trial",
+      "attendance": "3 Classes",
+      "type": "Class Pack",
+      "wodify_id": "15058"
+    }
+  },
+  "notes": [
+    "CrossFit Blaze Premium shows $135-$155 range in Wodify",
+    "Blaze Basic shows $0.00 - price needs to be set manually",
+    "Drop-In shows $20-$60 range",
+    "All prices extracted from Wodify Admin on 2026-02-22"
+  ]
+}
