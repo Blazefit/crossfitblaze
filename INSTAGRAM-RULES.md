@@ -1,10 +1,17 @@
 # INSTAGRAM RULES - NEVER FORGET
 
-## 1. ALWAYS Use Fresh Stock Photos (Unless Told Otherwise)
-- DEFAULT: Use Picsum stock photos (randomized daily)
+## 1. ALWAYS Generate AI Fitness Images Matching Caption Context
+- DEFAULT: Generate AI image matching the day's theme and caption
+- Monday = Motivation/sunrise/burpees
+- Tuesday = Technique/form/barbell
+- Wednesday = Community/mid-week energy
+- Thursday = Power/kettlebells/strength
+- Friday = Intensity/battle ropes/energy
+- Saturday = Heavy lifting/strength
+- Sunday = Recovery/stretching/calm
 - NEVER reuse the same image twice
 - Auto-delete images immediately after posting
-- Only use AI-generated images if explicitly instructed
+- NO holiday themes outside proper dates (Valentine's blocked after Feb 17)
 
 ## 2. Check Current Date Before Posting
 - Today: Feb 23, 2026

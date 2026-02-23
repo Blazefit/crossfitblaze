@@ -38,23 +38,60 @@ log() {
 
 log "Starting Instagram auto-post for $DAY"
 
-# CRITICAL: Generate FRESH stock photo - NEVER reuse old images
+# CRITICAL: Generate FRESH AI fitness image matching caption context - NEVER reuse
 DATE=$(date +%Y-%m-%d)
 DAY=$(date +%A)
+MONTH=$(date +%m)
+DAY_NUM=$(date +%d)
 
-# ALWAYS use fresh stock photo from Picsum (randomized by date)
-RANDOM_SEED=$(date +%Y%m%d%H)
-IMAGE="$WORKSPACE/media/generated/daily-${DATE}.jpg"
+# Build prompt based on day of week (matching caption context)
+case "$DAY" in
+    "Monday")
+        PROMPT="Professional CrossFit gym at sunrise, athlete doing burpees, motivational lighting, energetic atmosphere, fitness equipment visible, industrial gym style, dramatic shadows, high energy, no text"
+        ;;
+    "Tuesday")
+        PROMPT="CrossFit athlete perfecting form with barbell, technique focus, gym mirrors, professional lighting, strength training, clean gym environment, motivational, no text"
+        ;;
+    "Wednesday")
+        PROMPT="CrossFit community workout, multiple athletes training together, mid-week energy, gym equipment, team atmosphere, industrial gym, dramatic lighting, no text"
+        ;;
+    "Thursday")
+        PROMPT="CrossFit athlete doing kettlebell swings, power and strength, gym setting, sweat and determination, professional lighting, intense workout, no text"
+        ;;
+    "Friday")
+        PROMPT="CrossFit Friday workout intensity, athlete with battle ropes, explosive energy, gym atmosphere, end of week power, dramatic lighting, no text"
+        ;;
+    "Saturday")
+        PROMPT="CrossFit Saturday strength session, heavy lifting, barbells and weights, gym packed with equipment, weekend warrior energy, no text"
+        ;;
+    "Sunday")
+        PROMPT="CrossFit gym recovery day, stretching area, foam rollers, calm but focused atmosphere, Sunday reset, peaceful gym lighting, no text"
+        ;;
+esac
+
+# CRITICAL: Add holiday exclusion to prompt
+if [ "$MONTH" == "02" ] && [ "$DAY_NUM" -gt "17" ]; then
+    # After Feb 17, explicitly exclude Valentine's
+    PROMPT="${PROMPT}, NO hearts, NO pink, NO red romantic themes, NO Valentine's decorations, pure fitness only"
+fi
+
+# Generate AI image using pollinations.ai
+RANDOM_SEED=$(date +%Y%m%d)
+ENCODED_PROMPT=$(echo "$PROMPT" | python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.stdin.read().strip()))")
+IMAGE="$WORKSPACE/media/generated/ai-fitness-${DATE}.jpg"
 mkdir -p "$WORKSPACE/media/generated"
 
-# Download fresh stock photo - different every day
-curl -s -L --max-time 30 "https://picsum.photos/1080/1080?random=${RANDOM_SEED}" -o "$IMAGE" 2>/dev/null
+# Download AI generated image
+curl -s -L --max-time 60 "https://image.pollinations.ai/prompt/${ENCODED_PROMPT}?width=1080&height=1080&seed=${RANDOM_SEED}&nologo=true" -o "$IMAGE" 2>/dev/null
 
-# Verify image downloaded successfully
-if [ ! -f "$IMAGE" ] || [ ! -s "$IMAGE" ]; then
-    # Fallback to different seed if first fails
-    curl -s -L --max-time 30 "https://picsum.photos/1080/1080?random=${RANDOM_SEED}2" -o "$IMAGE" 2>/dev/null
+# Verify image downloaded
+if [ ! -f "$IMAGE" ] || [ ! -s "$IMAGE" ] || [ $(stat -f%z "$IMAGE" 2>/dev/null || echo 0) -lt 10000 ]; then
+    # Fallback: try with different seed
+    curl -s -L --max-time 60 "https://image.pollinations.ai/prompt/${ENCODED_PROMPT}?width=1080&height=1080&seed=${RANDOM_SEED}99&nologo=true" -o "$IMAGE" 2>/dev/null
 fi
+
+# Log what was generated
+echo "Generated AI image for $DAY: $PROMPT" >> "$LOG_FILE"
 
 # Verify image is fresh (not reused)
 if [ -f "$IMAGE" ]; then
