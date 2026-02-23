@@ -1,9 +1,10 @@
 # INSTAGRAM RULES - NEVER FORGET
 
-## 1. NEVER Reuse Old Images
-- Always generate FRESH images for each post
-- Check the date in the filename
-- If image has holiday themes (hearts, Christmas, etc.), verify date is appropriate
+## 1. ALWAYS Use Fresh Stock Photos (Unless Told Otherwise)
+- DEFAULT: Use Picsum stock photos (randomized daily)
+- NEVER reuse the same image twice
+- Auto-delete images immediately after posting
+- Only use AI-generated images if explicitly instructed
 
 ## 2. Check Current Date Before Posting
 - Today: Feb 23, 2026

@@ -38,18 +38,22 @@ log() {
 
 log "Starting Instagram auto-post for $DAY"
 
-# CRITICAL: Generate FRESH image - NEVER reuse old images
+# CRITICAL: Generate FRESH stock photo - NEVER reuse old images
 DATE=$(date +%Y-%m-%d)
 DAY=$(date +%A)
 
-# Generate fresh image with date validation
-if [ -f "$WORKSPACE/scripts/generate-daily-image.sh" ]; then
-    IMAGE=$($WORKSPACE/scripts/generate-daily-image.sh)
-else
-    # Fallback - use picsum with random seed based on date
-    RANDOM_SEED=$(date +%Y%m%d)
-    IMAGE="$WORKSPACE/media/generated/daily-${DATE}.jpg"
-    curl -s -L "https://picsum.photos/1080/1080?random=${RANDOM_SEED}" -o "$IMAGE" 2>/dev/null
+# ALWAYS use fresh stock photo from Picsum (randomized by date)
+RANDOM_SEED=$(date +%Y%m%d%H)
+IMAGE="$WORKSPACE/media/generated/daily-${DATE}.jpg"
+mkdir -p "$WORKSPACE/media/generated"
+
+# Download fresh stock photo - different every day
+curl -s -L --max-time 30 "https://picsum.photos/1080/1080?random=${RANDOM_SEED}" -o "$IMAGE" 2>/dev/null
+
+# Verify image downloaded successfully
+if [ ! -f "$IMAGE" ] || [ ! -s "$IMAGE" ]; then
+    # Fallback to different seed if first fails
+    curl -s -L --max-time 30 "https://picsum.photos/1080/1080?random=${RANDOM_SEED}2" -o "$IMAGE" 2>/dev/null
 fi
 
 # Verify image is fresh (not reused)
