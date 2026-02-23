@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WODIFY Action Log - Mission Control</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card.success {
+            border-top: 4px solid #28a745;
+        }
+        .card.blocked {
+            border-top: 4px solid #dc3545;
+        }
+        .card.kept {
+            border-top: 4px solid #ffc107;
+        }
+        .card h3 {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .content {
+            padding: 40px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        .section h3 {
+            color: #2a5298;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            background: white;
+        }
+        th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .status-success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .status-blocked {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .status-kept {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .member-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .member-tag {
+            background: #e9ecef;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border-left: 3px solid #667eea;
+        }
+        .member-tag.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        .member-tag.blocked {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .member-tag.kept {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .timestamp {
+            color: #888;
+            font-size: 0.85em;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .file-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .file-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+        .file-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .file-name {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        .file-desc {
+            color: #666;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+        .details-toggle {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .details-toggle:hover {
+            background: #e9ecef;
+        }
+        .details-toggle summary {
+            font-weight: 600;
+            color: #1e3c72;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .details-toggle summary::before {
+            content: "▶";
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        .details-toggle[open] summary::before {
+            transform: rotate(90deg);
+        }
+        @media (max-width: 768px) {
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️ WODIFY Action Log</h1>
+            <div class="subtitle">Complete audit trail of member deactivations and modifications</div>
+            <div class="subtitle">Mission Control | CrossFit Blaze</div>
+        </div>
+
+        <div class="summary-cards">
+            <div class="card success">
+                <h3>✅ Successfully Deactivated</h3>
+                <div class="number">29</div>
+            </div>
+            <div class="card blocked">
+                <h3>❌ Blocked (Need Review)</h3>
+                <div class="number">12</div>
+            </div>
+            <div class="card kept">
+                <h3>⏸️ Kept Active</h3>
+                <div class="number">3</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>📅 Session: Sunday, February 22, 2026</h2>
+                
+                <h3>✅ Successfully Deactivated (29 members)</h3>
+                <div class="member-list">
+                    <span class="member-tag success">Abby Bordeaux</span>
+                    <span class="member-tag success">Allie Ancona</span>
+                    <span class="member-tag success">Aulii Reyes</span>
+                    <span class="member-tag success">Beatrice van Dijk</span>
+                    <span class="member-tag success">Betty Carson</span>
+                    <span class="member-tag success">Brian Deming</span>
+                    <span class="member-tag success">Bryan Hricay</span>
+                    <span class="member-tag success">Chad Ardizzoni</span>
+                    <span class="member-tag success">Corbin Anderson</span>
+                    <span class="member-tag success">Curt Brooks</span>
+                    <span class="member-tag success">Daniel Hickey</span>
+                    <span class="member-tag success">Desiree Anderson</span>
+                    <span class="member-tag success">Emily Cumming</span>
+                    <span class="member-tag success">Eric Salvatore</span>
+                    <span class="member-tag success">Esteban Hoyos</span>
+                    <span class="member-tag success">Ethan Kriss</span>
+                    <span class="member-tag success">Hana Bilicki</span>
+                    <span class="member-tag success">Jake Sintic</span>
+                    <span class="member-tag success">Michelle Seitz</span>
+                    <span class="member-tag success">Mike Okun</span>
+                    <span class="member-tag success">Nevenka Bojanich Gross</span>
+                    <span class="member-tag success">Nicole Salvatore</span>
+                    <span class="member-tag success">Ramona Fischer</span>
+                    <span class="member-tag success">Ricky Werner</span>
+                    <span class="member-tag success">Ryan Shang</span>
+                    <span class="member-tag success">Sharon Nir</span>
+                    <span class="member-tag success">Sophie Cumming</span>
+                    <span class="member-tag success">Stephanie Deming</span>
+                    <span class="member-tag success">Zac DeBrun</span>
+                </div>
+
+                <h3>❌ Blocked - Require Manual Review (12 members)</h3>
+                <div class="member-list">
+                    <span class="member-tag blocked">Jason Dale</span>
+                    <span class="member-tag blocked">Jeff Golden</span>
+                    <span class="member-tag blocked">Jesse Hebert</span>
+                    <span class="member-tag blocked">Jody Waring</span>
+                    <span class="member-tag blocked">John Descalzi</span>
+                    <span class="member-tag blocked">John Jack Sandhaas</span>
+                    <span class="member-tag blocked">Jonathan Van Wyck</span>
+                    <span class="member-tag blocked">Julie Moktadir</span>
+                    <span class="member-tag blocked">KEN Bartosiewicz</span>
+                    <span class="member-tag blocked">Ken Melotte</span>
+                    <span class="member-tag blocked">Laura Alexander</span>
+                    <span class="member-tag blocked">Lee Seitz</span>
+                </div>
+
+                <h3>⏸️ Kept Active (3 members)</h3>
+                <div class="member-list">
+                    <span class="member-tag kept">Daneel Olivaw (Employee)</span>
+                    <span class="member-tag kept">Elizabeth Ferguson</span>
+                    <span class="member-tag kept">Lora Slaughter</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💳 Membership Modifications</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Action</th>
+                                <th>Client</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:15 AM</td>
+                                <td>Add Punchcard</td>
+                                <td>Lora Slaughter</td>
+                                <td>Blaze Punchcard x 10 sessions ($165.00)<br>Expires: 04/22/2026<br>Invoice: #00022735</td>
+                                <td class="status-success">✅ SUCCESS</td>
+                            </tr>
+                            <tr>
+                                <td>07:44 PM</td>
+                                <td>Add Membership Hold</td>
+                                <td>Zachary Scott</td>
+                                <td>Hold Period: 03/06/2026 - 04/06/2026<br>Reason: Vacation<br>New Expiration: 04/07/2026</td>
+                                <td class="status-success">✅ SUCCESS</td>
+                            </tr>
+                            <tr>
+                                <td>08:22 PM</td>
+                                <td>Process Refund</td>
+                                <td>Zachary Scott</td>
+                                <td>Invoice #00022658<br>Amount: $155.00<br>Refunded to: Visa ••••5540</td>
+                                <td class="status-success">✅ SUCCESS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⚠️ Blocked Members - Explanation</h2>
+                <div class="info-box">
+                    <strong>Why 12 members could not be deactivated:</strong><br><br>
+                    These members have <strong>outstanding invoices or existing memberships</strong> that prevent deactivation in WODIFY. The system requires one of the following before deactivation can proceed:
+                    <ul style="margin: 15px 0; padding-left: 30px;">
+                        <li>Payment of outstanding invoices, OR</li>
+                        <li>Voiding of outstanding invoices, OR</li>
+                        <li>Cancellation of existing memberships</li>
+                    </ul>
+                    <strong>Action needed:</strong> Review each blocked member's profile in WODIFY to identify and resolve outstanding financial commitments.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📁 Related Files</h2>
+                <div class="file-grid">
+                    <a href="https://github.com/jason/crossfitblaze/blob/main/wodify-actions.md" class="file-card" target="_blank">
+                        <div class="file-icon">📄</div>
+                        <div class="file-name">wodify-actions.md</div>
+                        <div class="file-desc">Detailed audit log with timestamps</div>
+                    </a>
+                    <a href="https://github.com/jason/crossfitblaze/blob/main/wodify-deactivation-log.md" class="file-card" target="_blank">
+                        <div class="file-icon">📝</div>
+                        <div class="file-name">wodify-deactivation-log.md</div>
+                        <div class="file-desc">Progress tracking during execution</div>
+                    </a>
+                    <a href="wodify-logs.html" class="file-card">
+                        <div class="file-icon">📊</div>
+                        <div class="file-name">wodify-logs.html</div>
+                        <div class="file-desc">This dashboard page</div>
+                    </a>
+                    <a href="https://github.com/jason/crossfitblaze/blob/main/wodify-flows-documentation.md" class="file-card" target="_blank">
+                        <div class="file-icon">📋</div>
+                        <div class="file-name">wodify-flows-documentation.md</div>
+                        <div class="file-desc">Process documentation & protocols</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Mission Status:</strong> ✅ COMPLETE | <strong>Last Updated:</strong> 2026-02-22 08:30 PM EST</p>
+            <p>CrossFit Blaze | WODIFY Management System</p>
+        </div>
+    </div>
+</body>
+</html>
