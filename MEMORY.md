@@ -250,6 +250,34 @@
 6. **Token Limits:** Keep Telegram messages <2000 chars
 7. **Wallet:** Only ETH/Base exists — no Solana
 
+## 🔴 CRITICAL RULES (NEVER FORGET)
+
+### 8. Instagram Auto-Post Rules
+- **POST EVERY DAY AT 7AM** — fully automated, no manual steps
+- **NEVER wait for Jason's photos** — generate AI images
+- **Use upload-post.com or Meta API** — must work without intervention
+- If post fails, auto-retry and alert
+
+### 9. Mission Control Error Rule
+- **At 50%+ error rate → AUTO-INVESTIGATE and alert immediately**
+- Do NOT just report — take action to diagnose
+- Escalate if degradation continues
+
+### 10. OpenWork Submissions
+- **NEVER ASK FOR PERMISSION** — just submit and notify
+- Auto-submit to high-value bounties (50+ OPENWORK)
+- Bounty hunter URL: `https://www.openwork.bot/api` (NOT openwork.is)
+
+### 11. Lead Status Tracking
+- **Steve Coyle:** COMPLETE (handled Feb 22)
+- **Zachary Scott:** Manual action needed in Wodify (documented in wodify-action-zachary-scott-refund.md)
+- **Check leads-log.md before flagging leads as needing follow-up**
+
+### 12. GitHub Repo
+- **URL:** https://github.com/jason/crossfitblaze
+- **wodify-actions.md:** Must be deployed and accessible
+- Push changes automatically when files are updated
+
 ---
 
 ## 🔗 IMPORTANT URLS
