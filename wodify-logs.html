@@ -527,13 +527,18 @@
                     </table>
                 </div>
 
-                <h3>⚠️ Report Access Limitation</h3>
+                <h3>✅ JavaScript-Heavy Pages - SOLUTION INSTALLED</h3>
                 <div class="info-box">
-                    <strong>JavaScript-heavy pages require Chrome Extension method.</strong><br><br>
-                    Wodify reports (Financial, Analytics) don't load in headless browser mode. To access:<br>
-                    1. Jason logs into Wodify in Chrome<br>
-                    2. Clicks OpenClaw extension badge (ON)<br>
-                    3. I can then use <code>profile="chrome"</code> with his active session<br><br>
+                    <strong>browser-use CLI with --headed flag</strong> was installed to handle Wodify's JavaScript-heavy pages.<br><br>
+                    <strong>What Works:</strong><br>
+                    ✅ <code>browser-use --headed open "https://app.wodify.com/Admin/Main?q=AgedReceivables"</code><br>
+                    ✅ Financial reports, Analytics, Invoices all accessible<br>
+                    ✅ Full JavaScript execution in headed mode<br><br>
+                    <strong>Tested & Verified (Feb 23):</strong><br>
+                    - Outstanding invoices retrieved successfully<br>
+                    - Attendance trend reports loaded<br>
+                    - Authentication with MFA works<br><br>
+                    <strong>For OpenClaw Native Browser Tool:</strong> Chrome Extension method required (Jason's logged-in session).<br><br>
                     <strong>Alternative:</strong> Request Wodify API credentials for direct data access.
                 </div>
             </div>
