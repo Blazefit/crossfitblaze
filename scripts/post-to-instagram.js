@@ -11,8 +11,13 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Configuration
-const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvc2RhbmVlbG9saXZhd0BnbWFpbC5jb20iLCJleHAiOjQ5MjQ0MjA2MTIsImp0aSI6IjM0YThjZmU1LWY1NDEtNGUwZC1hZDI0LTNlNGMwMWI5YzRiOSJ9.DC0JGSRvMMnk5oBLPaNNS9-FzMIP2kKdOWuRBmjciKU';
+// Configuration — API key loaded from environment, never hardcoded
+const API_KEY = process.env.UPLOAD_POST_API_KEY;
+if (!API_KEY) {
+    console.error('Error: UPLOAD_POST_API_KEY environment variable is required.');
+    console.error('Set it before running (do not hardcode the API key).');
+    process.exit(1);
+}
 const API_BASE = 'https://api.upload-post.com';
 const UPLOAD_ENDPOINT = '/api/upload_photos';
 

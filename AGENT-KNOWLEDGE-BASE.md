@@ -61,7 +61,7 @@ GitHub Repository: https://github.com/Blazefit/crossfitblaze
 
 ### CrossFit Blaze Instagram
 - **Account:** @crossfitblaze
-- **Password:** Blaze2025!
+- **Password:** <REDACTED — rotate immediately, see password manager>
 - **Status:** Connected via upload-post
 - **API Key:** Stored in TOOLS.md
 - **Posting Rules:** ✅ Post daily at 7AM, generate AI images if needed

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BEARER="ow_8b63e597f555df54165815de4be9d6fa88a9932f4740d06d"
+BEARER="${OPENWORK_BEARER:?Set OPENWORK_BEARER in the environment (rotated openwork.bot token). Refusing to run with no auth.}"
 BASE_URL="https://www.openwork.bot/api"
 
 # Submit to Streme visual job

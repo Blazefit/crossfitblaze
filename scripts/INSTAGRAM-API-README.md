@@ -34,7 +34,7 @@ node scripts/post-to-instagram.js /path/to/image.jpg "Caption" --dry-run
 - **API Base:** `https://api.upload-post.com`
 - **Endpoint:** `POST /api/upload_photos`
 - **Authentication:** `Authorization: Apikey <your-key>`
-- **API Key:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvc2RhbmVlbG9saXZhd0BnbWFpbC5jb20iLCJleHAiOjQ5MjQ0MjA2MTIsImp0aSI6IjM0YThjZmU1LWY1NDEtNGUwZC1hZDI0LTNlNGMwMWI5YzRiOSJ9.DC0JGSRvMMnk5oBLPaNNS9-FzMIP2kKdOWuRBmjciKU`
+- **API Key:** `<REDACTED — rotated, set via UPLOAD_POST_API_KEY env var; see password manager>`
 
 ### Required Parameters
 

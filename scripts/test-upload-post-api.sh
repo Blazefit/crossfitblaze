@@ -5,7 +5,8 @@
 
 set -e
 
-API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvc2RhbmVlbG9saXZhd0BnbWFpbC5jb20iLCJleHAiOjQ5MjQ0MjA2MTIsImp0aSI6IjM0YThjZmU1LWY1NDEtNGUwZC1hZDI0LTNlNGMwMWI5YzRiOSJ9.DC0JGSRvMMnk5oBLPaNNS9-FzMIP2kKdOWuRBmjciKU"
+# API key loaded from environment, never hardcoded — fail closed if unset
+API_KEY="${UPLOAD_POST_API_KEY:?UPLOAD_POST_API_KEY environment variable is required (do not hardcode the API key)}"
 API_BASE="https://api.upload-post.com/api"
 TEST_IMAGE="/Users/daneel/.openclaw/workspace/media/inbound/file_34---285e545e-7620-412c-be03-41b7faf09ffd.jpg"
 

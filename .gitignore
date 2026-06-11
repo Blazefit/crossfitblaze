@@ -5,6 +5,8 @@
 .env
 .env.local
 !.env.example
+config.json
+secrets.json
 
 # Generated files
 *.html
@@ -34,3 +36,7 @@ npm-debug.log*
 *.db
 !*.db.example
 .secrets/
+
+# Python
+__pycache__/
+*.pyc
