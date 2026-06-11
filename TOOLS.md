@@ -41,7 +41,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 **Instagram - CrossFit Blaze**
 - Username: crossfitblaze
-- Password: Blaze2025!
+- Password: <REDACTED — rotate immediately, see password manager>
 - Status: Credentials received 2026-02-09
 - Purpose: Content posting, performance tracking
 

@@ -9,9 +9,14 @@ import json
 import os
 from datetime import datetime
 
-# CrossFit Blaze Instagram credentials
-INSTAGRAM_USERNAME = "crossfitblaze"
-INSTAGRAM_PASSWORD = "Blaze2025!"
+# CrossFit Blaze Instagram credentials (loaded from environment — never hardcode secrets)
+INSTAGRAM_USERNAME = os.environ.get("INSTAGRAM_USERNAME", "crossfitblaze")
+INSTAGRAM_PASSWORD = os.environ.get("INSTAGRAM_PASSWORD")
+if not INSTAGRAM_PASSWORD:
+    raise SystemExit(
+        "INSTAGRAM_PASSWORD environment variable is required. "
+        "Set it before running (do not hardcode the password)."
+    )
 
 class InstagramAutomation:
     def __init__(self):

@@ -9,7 +9,8 @@ DAY=$(date +%A)
 WORKSPACE="/Users/daneel/.openclaw/workspace"
 OUTPUT_DIR="$WORKSPACE/shared-context/agent-outputs"
 LOG_FILE="$OUTPUT_DIR/instagram-auto-post.log"
-API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmVlbEBhaW1pc3Npb25jb250cm9sLnVzIiwiZXhwIjo0OTI1NDY4MTI1LCJqdGkiOiIwYmEzMTMxMC04MGE0LTQ2NTEtYmM1Mi1mZjQzMWFiZTA4MTIifQ.Z4rXI2jnWSlO37Qh-KAIeT2_QDc9zt_WVfTUw-59RlY"
+# API key loaded from environment, never hardcoded — fail closed if unset
+API_KEY="${UPLOAD_POST_API_KEY:?UPLOAD_POST_API_KEY environment variable is required (do not hardcode the API key)}"
 USER_PROFILE="crossfitblaze"
 
 # Generate caption based on day

@@ -82,7 +82,7 @@
 
 ### Instagram — CrossFit Blaze
 - **Account:** @crossfitblaze
-- **Password:** Blaze2025!
+- **Password:** <REDACTED — rotate immediately, see password manager>
 - **Followers:** 1,268
 - **Status:** ✅ Connected via upload-post
 - **First Post:** https://www.instagram.com/p/DUn9Iw_DHYY/

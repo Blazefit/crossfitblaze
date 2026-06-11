@@ -14,8 +14,13 @@ import requests
 from pathlib import Path
 from datetime import datetime
 
-# Configuration
-API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvc2RhbmVlbG9saXZhd0BnbWFpbC5jb20iLCJleHAiOjQ5MjQ0MjA2MTIsImp0aSI6IjM0YThjZmU1LWY1NDEtNGUwZC1hZDI0LTNlNGMwMWI5YzRiOSJ9.DC0JGSRvMMnk5oBLPaNNS9-FzMIP2kKdOWuRBmjciKU'
+# Configuration — API key loaded from environment, never hardcoded
+API_KEY = os.environ.get('UPLOAD_POST_API_KEY')
+if not API_KEY:
+    raise SystemExit(
+        "UPLOAD_POST_API_KEY environment variable is required. "
+        "Set it before running (do not hardcode the API key)."
+    )
 API_BASE = 'https://api.upload-post.com'
 UPLOAD_ENDPOINT = '/api/upload_photos'
 USERNAME = 'crossfitblaze'
