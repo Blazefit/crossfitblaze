@@ -3,77 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 Free CrossFit Classes Naples, FL | Try CrossFit Blaze Free</title>
-    <meta name="description" content="Try CrossFit FREE! Get 3 complimentary classes at CrossFit Blaze in Naples, FL. No commitment, no pressure. See if CrossFit is right for you. Sign up today!">
+    <title>Free First Visit | Blaze Method at CrossFit Blaze Naples</title>
+    <meta name="description" content="Sign your waiver and book your first free class at CrossFit Blaze in Naples, FL. Experience the Blaze Method. Walk-in welcome.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #1a1a1a; 
+            background: #f5f0e8;
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
         
         /* Header */
-        header { background: #1a1a1a; padding: 15px 0; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: #ff6b00; font-size: 24px; font-weight: bold; text-decoration: none; }
-        .phone { color: #fff; font-size: 18px; }
-        .phone a { color: #ff6b00; text-decoration: none; }
+        header { 
+            background: #1a1a1a; 
+            padding: 16px 0; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .logo { 
+            color: #ff6b00; 
+            font-size: 20px; 
+            font-weight: 700; 
+            text-decoration: none; 
+            letter-spacing: 0.5px;
+        }
+        
+        .phone { 
+            color: #fff; 
+            font-size: 16px; 
+        }
+        
+        .phone a { 
+            color: #ff6b00; 
+            text-decoration: none; 
+            font-weight: 600;
+        }
+        
+        /* Innovation Prep Banner */
+        .innovation-banner {
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+            padding: 12px 0;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .innovation-banner a {
+            color: white;
+            text-decoration: underline;
+        }
         
         /* Hero */
-        .hero { background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); padding: 80px 0; text-align: center; color: white; }
-        .hero-badge { display: inline-block; background: #fff; color: #ff6b00; padding: 8px 20px; border-radius: 50px; font-weight: bold; font-size: 0.95rem; margin-bottom: 25px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 30px; opacity: 0.95; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; opacity: 0.9; }
+        .hero { 
+            background: #1a1a1a;
+            padding: 60px 0; 
+            text-align: center; 
+            color: #f5f0e8; 
+        }
         
-        /* What's Included */
-        .includes { padding: 60px 0; background: #f8f8f8; }
-        .includes h2 { text-align: center; font-size: 2.2rem; margin-bottom: 15px; }
-        .includes > .container > p { text-align: center; color: #666; margin-bottom: 50px; font-size: 1.1rem; }
-        .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .include-item { background: white; padding: 35px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
-        .include-number { width: 50px; height: 50px; background: #ff6b00; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 20px; }
-        .include-item h3 { margin-bottom: 12px; color: #1a1a1a; }
+        .hero-badge { 
+            display: inline-block; 
+            background: #ff6b00; 
+            color: white; 
+            padding: 6px 16px; 
+            border-radius: 4px; 
+            font-weight: 700; 
+            font-size: 13px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px; 
+        }
         
-        /* How It Works */
-        .how-it-works { padding: 60px 0; }
-        .how-it-works h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
-        .steps { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; }
-        .step { text-align: center; max-width: 300px; }
-        .step-icon { font-size: 3rem; margin-bottom: 15px; }
-        .step h3 { color: #ff6b00; margin-bottom: 10px; }
+        .hero h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 16px; 
+            font-weight: 800;
+            line-height: 1.2;
+        }
         
-        /* Form Section */
-        .form-section { padding: 80px 0; background: #1a1a1a; }
-        .form-container { max-width: 600px; margin: 0 auto; background: white; padding: 50px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
-        .form-container h2 { text-align: center; color: #1a1a1a; margin-bottom: 10px; }
-        .form-container > p { text-align: center; color: #666; margin-bottom: 35px; }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #ff6b00; }
-        .form-group textarea { min-height: 100px; resize: vertical; }
-        .submit-btn { width: 100%; background: #ff6b00; color: white; padding: 18px; font-size: 1.2rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
-        .submit-btn:hover { background: #e55a00; transform: translateY(-2px); }
-        .form-note { text-align: center; margin-top: 20px; font-size: 0.9rem; color: #888; }
+        .hero-blaze-method {
+            font-size: 1.1rem;
+            color: #ff6b00;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
         
-        /* Trust Badges */
-        .trust { padding: 40px 0; background: #f8f8f8; text-align: center; }
-        .trust h3 { margin-bottom: 25px; color: #666; font-weight: 400; }
-        .trust-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; align-items: center; }
-        .trust-item { color: #444; font-weight: 600; }
+        .hero p { 
+            font-size: 1.15rem; 
+            max-width: 640px; 
+            margin: 0 auto 40px; 
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        /* Primary CTA Button */
+        .hero-cta { 
+            display: inline-block;
+            background: #ff6b00; 
+            color: white; 
+            padding: 18px 40px; 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
+        
+        .hero-cta:hover { 
+            background: #e55a00; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 0, 0.4);
+        }
+        
+        .hero-note {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* What to Expect */
+        .what-to-expect { 
+            padding: 70px 0; 
+            background: #f5f0e8; 
+        }
+        
+        .what-to-expect h2 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .what-to-expect > .container > p { 
+            text-align: center; 
+            color: #666; 
+            margin-bottom: 50px; 
+            font-size: 1.1rem; 
+        }
+        
+        .expect-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .expect-item { 
+            background: white; 
+            padding: 32px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .expect-icon { 
+            font-size: 2.5rem; 
+            margin-bottom: 16px; 
+        }
+        
+        .expect-item h3 { 
+            margin-bottom: 12px; 
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .expect-item p {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Location Section */
+        .location { 
+            padding: 70px 0; 
+            background: white;
+        }
+        
+        .location-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .location h2 { 
+            font-size: 2rem; 
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .location-details {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        
+        .location-details strong {
+            color: #ff6b00;
+            font-weight: 600;
+        }
+        
+        .location-hours {
+            display: inline-block;
+            background: #f5f0e8;
+            padding: 24px 32px;
+            border-radius: 8px;
+            margin-top: 16px;
+            text-align: left;
+        }
+        
+        .location-hours h3 {
+            color: #ff6b00;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .hours-list {
+            list-style: none;
+            line-height: 1.9;
+        }
+        
+        /* About Blaze Method */
+        .about-method {
+            padding: 70px 0;
+            background: #1a1a1a;
+            color: #f5f0e8;
+        }
+        
+        .about-method-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-method h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #ff6b00;
+        }
+        
+        .about-method p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
         
         /* FAQ */
-        .faq { padding: 60px 0; }
-        .faq h2 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
-        .faq-item { max-width: 800px; margin: 0 auto 25px; padding: 25px; background: #f8f8f8; border-radius: 10px; }
-        .faq-item h3 { color: #ff6b00; margin-bottom: 10px; font-size: 1.1rem; }
+        .faq { 
+            padding: 70px 0; 
+            background: #f5f0e8;
+        }
+        
+        .faq h2 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        .faq-item { 
+            max-width: 800px; 
+            margin: 0 auto 24px; 
+            padding: 28px; 
+            background: white; 
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .faq-item h3 { 
+            color: #ff6b00; 
+            margin-bottom: 12px; 
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .faq-item p {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Footer CTA */
+        .footer-cta {
+            padding: 60px 0;
+            background: #ff6b00;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .footer-cta-btn {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-cta-btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
         
         /* Footer */
-        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
-        footer p { opacity: 0.7; }
+        footer { 
+            background: #1a1a1a; 
+            color: #f5f0e8; 
+            padding: 40px 0; 
+            text-align: center; 
+        }
         
+        footer p { 
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+        
+        footer a {
+            color: #ff6b00;
+            text-decoration: none;
+        }
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .form-container { padding: 30px 20px; }
+            .hero h1 { 
+                font-size: 1.8rem; 
+            }
+            
+            .hero-cta {
+                font-size: 1.1rem;
+                padding: 16px 32px;
+            }
+            
+            .what-to-expect h2,
+            .location h2,
+            .about-method h2,
+            .faq h2,
+            .footer-cta h2 {
+                font-size: 1.6rem;
+            }
+            
+            .expect-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .location-hours {
+                padding: 20px;
+            }
+            
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .innovation-banner {
+                font-size: 13px;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
@@ -84,145 +402,112 @@
             <div class="phone">Call Us: <a href="tel:2392605242">(239) 260-5242</a></div>
         </div>
     </header>
+    
+    <div class="innovation-banner">
+        Innovation Prep Teachers: Free Drop-In October 7, 2026 · #GetWellMovement · <a href="#signup">Sign Waiver</a>
+    </div>
 
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">🔥 LIMITED TIME OFFER</div>
-            <h1>Try CrossFit FREE</h1>
-            <h2>Get 3 Complimentary Classes — No Commitment Required</h2>
-            <p>Experience CrossFit Blaze in Naples, FL with zero risk. See if it's right for you before making any decision.</p>
+            <div class="hero-badge">Free First Class</div>
+            <h1>Welcome to Blaze</h1>
+            <p class="hero-blaze-method">Experience the Blaze Method</p>
+            <p>Sign your waiver and book your first free class. Walk-in welcome. No commitment required.</p>
+            <a href="https://blaze.wodify.com/OnlineSalesPage/Main?q=Classes%7COnlineMembershipId%3D13574%26LocationId%3D1788" class="hero-cta">Sign Waiver & Book Free Class</a>
+            <p class="hero-note">First class free · Walk-in welcome</p>
         </div>
     </section>
 
-    <section class="includes">
+    <section class="what-to-expect">
         <div class="container">
-            <h2>What's Included in Your Free Trial</h2>
-            <p>Everything you need to experience real CrossFit training</p>
-            <div class="includes-grid">
-                <div class="include-item">
-                    <div class="include-number">1</div>
-                    <h3>OnRamp Session</h3>
-                    <p>One-on-one intro where a coach teaches you the fundamental movements and assesses your fitness level.</p>
+            <h2>What to Expect</h2>
+            <p>Your first visit at Blaze</p>
+            <div class="expect-grid">
+                <div class="expect-item">
+                    <div class="expect-icon">🤝</div>
+                    <h3>Friendly Welcome</h3>
+                    <p>Meet your coach and get a quick tour. We'll answer any questions and make sure you feel comfortable.</p>
                 </div>
-                <div class="include-item">
-                    <div class="include-number">2</div>
-                    <h3>Group Class #1</h3>
-                    <p>Your first full CrossFit workout with the group. Scaled to your ability, guided by expert coaches.</p>
+                <div class="expect-item">
+                    <div class="expect-icon">💪</div>
+                    <h3>Custom Scaling</h3>
+                    <p>Every workout is scaled to your level. You work at your pace with coaching every step.</p>
                 </div>
-                <div class="include-item">
-                    <div class="include-number">3</div>
-                    <h3>Group Class #2</h3>
-                    <p>Come back for a second class to really get a feel for the community and the workouts.</p>
-                </div>
-                <div class="include-item">
-                    <div class="include-number">✓</div>
-                    <h3>Goal Consultation</h3>
-                    <p>Sit down with a coach to discuss your goals and get a personalized recommendation.</p>
+                <div class="expect-item">
+                    <div class="expect-icon">🔥</div>
+                    <h3>Group Energy</h3>
+                    <p>Train with the community. High energy, supportive environment, solid coaching.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="how-it-works">
+    <section class="about-method">
         <div class="container">
-            <h2>How Your Free Trial Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-icon">📝</div>
-                    <h3>1. Sign Up</h3>
-                    <p>Fill out the form below to claim your free classes. We'll contact you within 24 hours.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">📅</div>
-                    <h3>2. Schedule</h3>
-                    <p>Pick a time for your OnRamp session that works with your schedule.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">💪</div>
-                    <h3>3. Train</h3>
-                    <p>Complete your 3 free sessions. No pressure, no strings attached.</p>
-                </div>
+            <div class="about-method-content">
+                <h2>The Blaze Method</h2>
+                <p>We train movement, build strength, and push intensity in a way that works for real people with real lives.</p>
+                <p>No gimmicks. No fluff. Just smart programming, solid coaching, and a community that shows up.</p>
             </div>
         </div>
     </section>
 
-    <section class="trust">
+    <section class="location">
         <div class="container">
-            <h3>Join hundreds of Naples residents who've transformed their fitness</h3>
-            <div class="trust-badges">
-                <span class="trust-item">⭐⭐⭐⭐⭐ 5-Star Reviews</span>
-                <span class="trust-item">🏆 Best Gym in Naples</span>
-                <span class="trust-item">👥 500+ Members</span>
-                <span class="trust-item">🎯 10+ Years Experience</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="form-section" id="signup">
-        <div class="container">
-            <div class="form-container">
-                <h2>Claim Your 3 Free Classes</h2>
-                <p>Fill out the form and we'll contact you within 24 hours</p>
-                <form action="https://crossfitblaze.com/free-intro" method="POST">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required placeholder="Your full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(239) 555-1234">
-                    </div>
-                    <div class="form-group">
-                        <label for="experience">Fitness Experience</label>
-                        <select id="experience" name="experience">
-                            <option value="">Select your experience level</option>
-                            <option value="beginner">Complete beginner</option>
-                            <option value="some">Some exercise experience</option>
-                            <option value="regular">Regularly active</option>
-                            <option value="athlete">Former/current athlete</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="goals">What are your fitness goals?</label>
-                        <textarea id="goals" name="goals" placeholder="Lose weight, build muscle, improve health, etc."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Get My 3 Free Classes →</button>
-                    <p class="form-note">🔒 Your information is secure. No spam, ever. Unsubscribe anytime.</p>
-                </form>
+            <div class="location-content">
+                <h2>Come Train With Us</h2>
+                <div class="location-details">
+                    <p><strong>6563 Taylor Rd Suite 8</strong><br>Naples, FL 34109</p>
+                    <p><strong>Phone:</strong> <a href="tel:2392605242" style="color: #ff6b00; text-decoration: none;">(239) 260-5242</a></p>
+                </div>
+                <div class="location-hours">
+                    <h3>Class Times</h3>
+                    <ul class="hours-list">
+                        <li>Mon - Fri: 6 / 7 / 9 am</li>
+                        <li>Mon - Fri: 11:30 am</li>
+                        <li>Mon - Fri: 4:30 / 5:30 pm</li>
+                        <li>Saturday: 8 am · 10 am</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="faq">
         <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h3>Is this really free? What's the catch?</h3>
-                <p>100% free, no catch. We believe the best way to see if CrossFit is right for you is to try it. After your 3 classes, you can decide if you want to continue — no pressure whatsoever.</p>
-            </div>
+            <h2>Questions?</h2>
             <div class="faq-item">
                 <h3>Do I need to be in shape first?</h3>
-                <p>Not at all! Our free trial includes an OnRamp session where we teach you everything from scratch. We scale every workout to your current fitness level.</p>
+                <p>No. We scale everything to your level. Start where you are.</p>
             </div>
             <div class="faq-item">
                 <h3>What should I bring?</h3>
-                <p>Just workout clothes, athletic shoes, and a water bottle. We provide everything else including any equipment you'll need.</p>
+                <p>Workout clothes, athletic shoes, water bottle. Bring sneakers and we provide everything else.</p>
             </div>
             <div class="faq-item">
-                <h3>How long are the classes?</h3>
-                <p>Most classes run about 45-60 minutes including warm-up, workout, and cool-down. The OnRamp session is about 45 minutes.</p>
+                <h3>Is the first class really free?</h3>
+                <p>Yes. Walk-in welcome. Sign the waiver, book a class, show up.</p>
             </div>
+            <div class="faq-item">
+                <h3>How long are classes?</h3>
+                <p>About 60 minutes. Warm-up, workout, cool-down.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <div class="container">
+            <h2>Ready to Start?</h2>
+            <a href="https://blaze.wodify.com/OnlineSalesPage/Main?q=Classes%7COnlineMembershipId%3D13574%26LocationId%3D1788" class="footer-cta-btn">Sign Waiver & Book Free Class</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>CrossFit Blaze | 6563 Taylor Rd #8, Naples, FL 34109 | (239) 260-5242</p>
-            <p style="margin-top: 10px;">© 2026 CrossFit Blaze. All rights reserved.</p>
+            <p><strong>CrossFit Blaze</strong><br>6563 Taylor Rd Suite 8, Naples, FL 34109</p>
+            <p style="margin-top: 12px;"><a href="tel:2392605242">(239) 260-5242</a></p>
+            <p style="margin-top: 20px; opacity: 0.5;">© 2026 CrossFit Blaze. All rights reserved.</p>
         </div>
     </footer>
 </body>
